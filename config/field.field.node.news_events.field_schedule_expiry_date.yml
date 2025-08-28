@@ -1,0 +1,21 @@
+uuid: 8347d525-35f3-4d33-bb07-143966bab698
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_schedule_expiry_date
+    - node.type.news_events
+  module:
+    - datetime
+id: node.news_events.field_schedule_expiry_date
+field_name: field_schedule_expiry_date
+entity_type: node
+bundle: news_events
+label: 'Schedule Expiry Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,8 @@
+uuid: 538a9e88-5760-42f5-90cb-c4edfd387b9d
+langcode: en-gb
+status: true
+dependencies: {  }
+id: organizational-structure
+label: 'Organizational Structure'
+description: '#'
+locked: false

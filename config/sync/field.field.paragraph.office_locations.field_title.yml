@@ -1,0 +1,24 @@
+uuid: 375dc50c-bb4e-42e1-9926-2c0372520744
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.office_locations
+  module:
+    - text
+id: paragraph.office_locations.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: office_locations
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

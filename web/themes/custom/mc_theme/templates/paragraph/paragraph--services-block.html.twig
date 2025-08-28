@@ -1,0 +1,51 @@
+<section class="services-section">
+	<div class="container">
+		<div class="section-header">
+			<div>
+				<h2 class="section-title">{{content.field_title|raw}}</h2>
+				<div class="section-subtitle">
+					{{content.field_description|raw}}</div>
+			</div>
+			{% if paragraph.field_cta is not empty %}
+				{% set link = paragraph.field_cta %}
+				<a href="{{ link.uri|replace({'internal:': ''}) }}" class="btn-primary">
+					<img src="{{ directory }}/assets/images/img_icons_white_a700_24x24.svg" alt="Icon" style="width: 24px; height: 24px;"/>
+					{{ link.title }}
+				</a>
+			{% endif %}
+			{# <a href="#" class="btn-primary">
+			                    <img src="{{ directory }}/assets/images/img_icons_white_a700_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+			                    View all services
+			                </a> #}
+		</div>
+{% if paragraph.field_online_services is not empty %}
+      <div class="services-grid">
+        {% for item in paragraph.field_online_services %}
+          {% set node = item.entity %}
+          {% if node %}
+            <div class="service-card">
+              <div class="service-icon">
+                {% if node.field_icon.entity.field_media_image.entity is not empty %}
+                  <img src="{{ file_url(node.field_icon.entity.field_media_image.entity.uri.value) }}" alt="{{ node.field_icon.field_media_image.entity.alt }}" />
+                {% endif %}
+              </div>
+
+              <h3 class="service-title">{{ node.label }}</h3>
+
+              <div class="service-description">
+                {{ node.body.value|raw }}
+              </div>
+
+              {% set service_link = node.field_service_link %}
+              {% if service_link %}
+                <a href="{{ service_link.uri|replace({'internal:': ''}) }}" class="service-btn">
+                    <img src="{{ file_url(node.field_service_link_icon.entity.field_media_image.entity.uri.value) }}" alt="{{ node.field_service_link_icon.field_media_image.entity.alt }}" />{{ service_link.title }}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+	</div>
+</section>

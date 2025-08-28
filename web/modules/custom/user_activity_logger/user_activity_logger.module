@@ -1,0 +1,113 @@
+<?php
+
+use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\Core\Entity\EntityInterface;
+use Symfony\Component\HttpFoundation\Request;
+/**
+ * Implements hook_user_login().
+ */
+function user_activity_logger_user_login(AccountInterface $account) {
+  user_activity_logger_log($account, 'login');
+}
+
+/**
+ * Implements hook_user_logout().
+ */
+function user_activity_logger_user_logout(AccountInterface $account) {
+  user_activity_logger_log($account, 'logout');
+}
+
+  /**
+ * Implements hook_entity_insert().
+ */
+function user_activity_logger_entity_insert(EntityInterface $entity) {
+    user_activity_logger_log(NULL, 'create', $entity);
+  }
+  
+  /**
+   * Implements hook_entity_update().
+   */
+  function user_activity_logger_entity_update(EntityInterface $entity) {
+    user_activity_logger_log(NULL, 'update', $entity);
+  }
+  
+  /**
+   * Implements hook_entity_delete().
+   */
+  function user_activity_logger_entity_delete(EntityInterface $entity) {
+    user_activity_logger_log(NULL, 'delete', $entity);
+  }
+
+  function user_activity_logger_log(AccountInterface $account = NULL, $action = 'unknown', EntityInterface $entity = NULL) {
+    $current_user = \Drupal::currentUser();
+    $account = $account ?: $current_user;
+  
+    $uid = $account->id();
+    $username = $account->getAccountName();
+  
+    // Get IP using Drupal's RequestStack.
+    $request_stack = \Drupal::service('request_stack');
+    $request = $request_stack->getCurrentRequest();
+    $ip = $request ? $request->getClientIp() : 'unknown';
+  
+    // Optional: safely get MAC address (not recommended for production use).
+    // Will only work on the server (not user's actual device).
+    $mac = '';
+    if (stripos(PHP_OS, 'WIN') === 0) {
+      $mac = exec('getmac');
+    } else {
+      $mac = exec("cat /sys/class/net/$(ip route show default | awk '/default/ {print $5}')/address");
+    }
+  
+    $entity_type = $entity ? $entity->getEntityTypeId() : NULL;
+    $entity_id = $entity ? $entity->id() : NULL;
+  
+    \Drupal::database()->insert('user_activity_log')
+      ->fields([
+        'uid' => $uid,
+        'username' => $username,
+        'action' => $action,
+        'entity_type' => $entity_type,
+        'entity_id' => $entity_id,
+        'ip_address' => $ip,
+        'mac_address' => $mac,
+        'timestamp' => \Drupal::time()->getCurrentTime(),
+      ])
+      ->execute();
+  }
+
+/**
+ * Implements hook_admin_paths_alter().
+ */
+function user_activity_logger_admin_paths_alter(&$paths) {
+  $account = \Drupal::currentUser();
+
+  // Get all content types.
+  $types = \Drupal\node\Entity\NodeType::loadMultiple();
+
+  foreach ($types as $type_id => $type) {
+    // Map actions to paths.
+    $actions = [
+      'create' => [
+        'permission' => "create {$type_id} content",
+        'path' => "/node/add/{$type_id}",
+      ],
+      'edit' => [
+        'permission' => "edit any {$type_id} content",
+        'path' => "/admin/content", // filtered page
+      ],
+      'delete' => [
+        'permission' => "delete any {$type_id} content",
+        'path' => "/admin/content", // filtered page
+      ],
+    ];
+
+    foreach ($actions as $action) {
+      if ($account->hasPermission($action['permission'])) {
+        // Mark this path as admin theme path.
+        $paths[$action['path']] = TRUE;
+      }
+    }
+  }
+}

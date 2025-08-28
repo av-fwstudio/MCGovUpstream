@@ -1,0 +1,8 @@
+_core:
+  default_config_hash: 6SzvOxftOBLs3Rq_3W4-s4VcSL-tIKj-8xZiRJXtNKc
+langcode: en
+default_table_selector: 'table:not([data-drupal-selector="edit-settings-selection-table"])'
+default_fail_class: tabled--stacked
+default_caption_side: top
+default_large_character_threshold: 50
+default_small_character_threshold: 8

@@ -1,0 +1,25 @@
+uuid: 67fb3bd0-6d02-40b2-af7c-9f85ccd7fa7e
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - system
+    - user_activity_logger
+  theme:
+    - mc_theme
+id: mc_theme_permissionbaseddashboard
+theme: mc_theme
+region: content
+weight: 0
+provider: null
+plugin: permission_based_dashboard
+settings:
+  id: permission_based_dashboard
+  label: 'User Dashboard'
+  label_display: visible
+  provider: user_activity_logger
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/user/*'

@@ -1,0 +1,24 @@
+uuid: a053182f-8e13-4179-bbd9-4b9bde928ec5
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sub_title
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.useful_links
+  module:
+    - text
+id: paragraph.useful_links.field_sub_title
+field_name: field_sub_title
+entity_type: paragraph
+bundle: useful_links
+label: 'Sub Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

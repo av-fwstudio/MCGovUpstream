@@ -1,0 +1,49 @@
+uuid: cf173426-73d2-46fc-a606-ff998583be72
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.helpline_number_items.field_helpline_icon
+    - field.field.paragraph.helpline_number_items.field_number
+    - field.field.paragraph.helpline_number_items.field_sub_title
+    - field.field.paragraph.helpline_number_items.field_title
+    - paragraphs.paragraphs_type.helpline_number_items
+  module:
+    - text
+id: paragraph.helpline_number_items.default
+targetEntityType: paragraph
+bundle: helpline_number_items
+mode: default
+content:
+  field_helpline_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_sub_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,39 @@
+{% set bg_img = file_url(content.field_background_image.0['#media'].field_media_image.entity.uri.value) %}
+<section class="key-officials" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%),url('{{ bg_img }}')">
+  <div class="overlay">
+    <div class="container">
+      {% if content.field_heading %}
+        <h3 >{{ content.field_heading.0['#context'].value }}</h3>
+      {% endif %}
+      <div class="row">
+      {% if paragraph.field_directory_memebers is not empty %}
+        {% for item in paragraph.field_directory_memebers %}
+          {% set node = item.entity %}
+          <div class="col-md-4">
+            <div class="directory-card">
+                <div class="directory-card-wrap">
+                    <div class="image-wrap">
+                        {% set img = file_url(node.field_member_image.entity.field_media_image.entity.uri.value) %}
+                        <div class="img"><img src="{{ img }}" alt="profile"></div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="name">{{ node.field_name.value|raw }}</h3>
+                        {% if node.field_designation.entity %}
+                            <div class="designation">{{ node.field_designation.entity.label }}</div>
+                        {% endif %}
+                        {% if node.field_office_telepone_no.value %}
+                            <div class="phone"><span class="title">Phone:</span>{{ node.field_office_telepone_no.value|raw }}</div>
+                        {% endif %}
+                        {% if node.field_email.value %}
+                            <div class="email"><span class="title">Email:</span>{{ node.field_email.value|raw }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

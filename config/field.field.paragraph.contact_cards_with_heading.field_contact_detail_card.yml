@@ -1,0 +1,88 @@
+uuid: d0726afd-1f69-4e73-acd0-ee074f82eb96
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_detail_card
+    - paragraphs.paragraphs_type.contact_card_item
+    - paragraphs.paragraphs_type.contact_cards_with_heading
+  module:
+    - entity_reference_revisions
+id: paragraph.contact_cards_with_heading.field_contact_detail_card
+field_name: field_contact_detail_card
+entity_type: paragraph
+bundle: contact_cards_with_heading
+label: 'Contact Detail Card'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      contact_card_item: contact_card_item
+    negate: 0
+    target_bundles_drag_drop:
+      carousel_icon_item:
+        weight: 21
+        enabled: false
+      carousel_items:
+        weight: 22
+        enabled: false
+      carousel_list:
+        weight: 23
+        enabled: false
+      contact_card_item:
+        weight: 25
+        enabled: true
+      contact_cards_with_heading:
+        weight: 24
+        enabled: false
+      directory_block:
+        weight: 26
+        enabled: false
+      events_gallery:
+        weight: 27
+        enabled: false
+      helpline_number_items:
+        weight: 29
+        enabled: false
+      helpline_numbers:
+        weight: 28
+        enabled: false
+      key_officials:
+        weight: 30
+        enabled: false
+      latest_news_block:
+        weight: 31
+        enabled: false
+      mc_form:
+        weight: 32
+        enabled: false
+      office_contact_deatils:
+        weight: 33
+        enabled: false
+      office_contact_detail_item:
+        weight: 34
+        enabled: false
+      office_locations:
+        weight: 35
+        enabled: false
+      section_menu:
+        weight: 36
+        enabled: false
+      service_cards:
+        weight: 38
+        enabled: false
+      services_block:
+        weight: 37
+        enabled: false
+      useful_links:
+        weight: 39
+        enabled: false
+      welcome_message:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

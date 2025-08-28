@@ -1,0 +1,21 @@
+uuid: e85cee21-8dc1-4bef-853b-ba7d0d4e330b
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - views
+    - viewsreference
+id: paragraph.field_team_members_block
+field_name: field_team_members_block
+entity_type: paragraph
+type: viewsreference
+settings:
+  target_type: view
+module: viewsreference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,36 @@
+uuid: 5adf036c-04a8-4c47-8ccd-6a78ec6d4477
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.team_members_block.field_heading
+    - field.field.paragraph.team_members_block.field_team_members_block
+    - paragraphs.paragraphs_type.team_members_block
+  module:
+    - viewsreference
+id: paragraph.team_members_block.default
+targetEntityType: paragraph
+bundle: team_members_block
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_team_members_block:
+    type: viewsreference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

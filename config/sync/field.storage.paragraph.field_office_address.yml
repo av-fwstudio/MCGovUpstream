@@ -1,0 +1,19 @@
+uuid: 3e099313-d2dd-4951-b0df-15deca281b34
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_office_address
+field_name: field_office_address
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

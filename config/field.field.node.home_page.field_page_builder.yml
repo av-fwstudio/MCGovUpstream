@@ -1,0 +1,113 @@
+uuid: ad9b8de1-c8b3-41ff-94d8-a8cc7e785b18
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_builder
+    - node.type.home_page
+    - paragraphs.paragraphs_type.carousel_list
+    - paragraphs.paragraphs_type.directory_block
+    - paragraphs.paragraphs_type.events_gallery
+    - paragraphs.paragraphs_type.helpline_numbers
+    - paragraphs.paragraphs_type.latest_news_block
+    - paragraphs.paragraphs_type.service_cards
+    - paragraphs.paragraphs_type.services_block
+    - paragraphs.paragraphs_type.useful_links
+    - paragraphs.paragraphs_type.welcome_message
+  module:
+    - entity_reference_revisions
+id: node.home_page.field_page_builder
+field_name: field_page_builder
+entity_type: node
+bundle: home_page
+label: 'Page Builder'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      carousel_list: carousel_list
+      directory_block: directory_block
+      welcome_message: welcome_message
+      services_block: services_block
+      latest_news_block: latest_news_block
+      helpline_numbers: helpline_numbers
+      useful_links: useful_links
+      events_gallery: events_gallery
+      service_cards: service_cards
+    negate: 0
+    target_bundles_drag_drop:
+      carousel_icon_item:
+        weight: 9
+        enabled: false
+      carousel_items:
+        weight: 5
+        enabled: false
+      carousel_list:
+        weight: 6
+        enabled: true
+      contact_card_item:
+        weight: 27
+        enabled: false
+      contact_cards_with_heading:
+        weight: 26
+        enabled: false
+      contact_cards_wrapper:
+        weight: 24
+        enabled: false
+      contact_us_address:
+        weight: 28
+        enabled: false
+      directory_block:
+        weight: 7
+        enabled: true
+      events_gallery:
+        weight: 16
+        enabled: true
+      helpline_number_items:
+        weight: 16
+        enabled: false
+      helpline_numbers:
+        weight: 15
+        enabled: true
+      key_officials:
+        weight: 33
+        enabled: false
+      latest_news_block:
+        weight: 10
+        enabled: true
+      mc_form:
+        weight: 35
+        enabled: false
+      office_contact_deatils:
+        weight: 36
+        enabled: false
+      office_contact_detail_item:
+        weight: 37
+        enabled: false
+      office_locations:
+        weight: 38
+        enabled: false
+      section_menu:
+        weight: 39
+        enabled: false
+      service_cards:
+        weight: 22
+        enabled: true
+      services_block:
+        weight: 9
+        enabled: true
+      team_members_block:
+        weight: 42
+        enabled: false
+      useful_links:
+        weight: 15
+        enabled: true
+      welcome_message:
+        weight: 8
+        enabled: true
+field_type: entity_reference_revisions

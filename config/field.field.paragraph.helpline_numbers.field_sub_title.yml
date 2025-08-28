@@ -1,0 +1,24 @@
+uuid: c2f7a400-37c5-410b-9adc-83fa76e7e2b7
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sub_title
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.helpline_numbers
+  module:
+    - text
+id: paragraph.helpline_numbers.field_sub_title
+field_name: field_sub_title
+entity_type: paragraph
+bundle: helpline_numbers
+label: 'Sub Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

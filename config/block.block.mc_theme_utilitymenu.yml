@@ -1,0 +1,25 @@
+uuid: 990833f8-2db2-4b89-b5f2-d56e7f012716
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - system.menu.utility-menu
+  module:
+    - system
+  theme:
+    - mc_theme
+id: mc_theme_utilitymenu
+theme: mc_theme
+region: utility
+weight: -8
+provider: null
+plugin: 'system_menu_block:utility-menu'
+settings:
+  id: 'system_menu_block:utility-menu'
+  label: 'Utility Menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

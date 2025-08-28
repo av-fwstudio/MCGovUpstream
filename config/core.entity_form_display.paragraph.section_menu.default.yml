@@ -1,0 +1,25 @@
+uuid: 98541afa-2103-42c2-ac25-a068a4954271
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.section_menu.field_cta
+    - paragraphs.paragraphs_type.section_menu
+  module:
+    - link
+id: paragraph.section_menu.default
+targetEntityType: paragraph
+bundle: section_menu
+mode: default
+content:
+  field_cta:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,733 @@
+blocks:
+  -
+    info: 'Menu Toggle'
+    langcode: en-gb
+    uuid: 45bda342-8c49-4997-bcb9-ddf270c946c3
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<p><button class="push-menu-toggle"><i class="fa-solid fa-bars"></i></button></p>'
+          summary: ''
+          format: full_html
+  -
+    info: 'Welcome Message'
+    langcode: en-gb
+    uuid: 3d103f7a-73fb-4981-8b0c-d406a360d061
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<p>Welcome to Municipal Corporation Yamunanagar-Jagadhri</p>'
+          summary: ''
+          format: basic_html
+  -
+    info: 'footer contact us'
+    langcode: en-gb
+    uuid: b099f237-aa78-42e3-aa78-3c94cf708c4a
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<div class="footer-section"><h3>Contact Us</h3><div class="contact-item"><img src="/themes/custom/mc_theme/assets/images/img_mdi_location.svg" alt="Location" width="24" height="24"> <span>Municipal Corporation Office Yamuna Nagar &amp; Jagadhri Haryana - 135001, India</span></div><div class="contact-item"><img src="/themes/custom/mc_theme/assets/images/img_line_md_phone.svg" alt="Phone" width="24" height="24"> <span>+91- 1722567228</span></div><div class="contact-item"><img src="/themes/custom/mc_theme/assets/images/img_material_symbols_mail.svg" alt="Email" width="24" height="24"> <span>info@mcyamunanagar.gov.in</span></div></div>'
+          summary: ''
+          format: full_html
+  -
+    info: copyright
+    langcode: en-gb
+    uuid: 1f518871-5aa4-422f-a3c7-5f013353e662
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<div class="footer-bottom-content"><p>© 2024 Municipal Corporation Yamuna Nagar &amp; Jagadhri. All rights reserved.</p><div class="footer-links"><a href="#">Privacy Policy</a> <a href="#">Terms of Service</a> <a href="#">Sitemap</a></div></div><p class="footer-version">Last updated: 29/7/2025 | Version 2.0.1 | <a style="text-decoration:underline;" href="#">Report Issue</a></p>'
+          summary: ''
+          format: full_html
+  -
+    info: 'footer logo'
+    langcode: en-gb
+    uuid: 76423511-6420-47c9-b9fe-04ba997c3283
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<div class="footer-content"><div class="footer-section"><div class="footer-logo"><img src="/themes/custom/mc_theme/assets/images/img_logo_2.png" alt="Municipal Corporation Logo" width="67" height="65"><div class="footer-logo-text"><h3>Municipal Corporation</h3><h4>Yamunanagar-Jagadhri</h4></div></div><p class="footer-description">We are committed to building a clean, green, and progressive Municipal Corporation. We work to provide efficient public services, enhance infrastructure, and ensure the overall well-being of our citizens through digital innovation.</p><div class="social-links"><a href="#"><img src="/themes/custom/mc_theme/assets/images/img_ic_baseline_facebook.svg" alt="Facebook" width="39" height="39"></a> <a href="#"><img src="/themes/custom/mc_theme/assets/images/img_mdi_instagram.svg" alt="Instagram" width="39" height="39"></a> <a href="#"><img src="/themes/custom/mc_theme/assets/images/img_mdi_youtube.svg" alt="YouTube" width="39" height="39"></a> <a href="#"><img src="/themes/custom/mc_theme/assets/images/img_mdi_twitter.svg" alt="Twitter" width="39" height="39"></a></div></div></div>'
+          summary: ''
+          format: full_html
+menus:
+  -
+    menu_name: footer-citizen-services
+    title: 'Birth/Death Certificate'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -50
+    langcode: en-gb
+    uuid: 5c3bc2a9-6cfb-4c64-99ca-7899d9ac32aa
+    options: {  }
+  -
+    menu_name: footer-citizen-services
+    title: 'Property Tax'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -49
+    langcode: en-gb
+    uuid: e2b86d30-03a7-4661-8a50-c37ec3040ba9
+    options: {  }
+  -
+    menu_name: footer-citizen-services
+    title: 'Marriage Registration'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -48
+    langcode: en-gb
+    uuid: 09238d61-3c8d-423c-a789-7bc2eb23fd98
+    options: {  }
+  -
+    menu_name: footer-citizen-services
+    title: 'Water Connection'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -47
+    langcode: en-gb
+    uuid: d74505e5-8e88-4280-b80e-6975557bbe34
+    options: {  }
+  -
+    menu_name: footer-citizen-services
+    title: 'Public Grievance'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -46
+    langcode: en-gb
+    uuid: 542120bc-767e-46de-9858-ffdd068f575d
+    options: {  }
+  -
+    menu_name: footer-citizen-services
+    title: 'RTI Application'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -45
+    langcode: en-gb
+    uuid: 478da25d-eeda-4b5b-91f6-f892cb46caf4
+    options: {  }
+  -
+    menu_name: footer-links
+    title: Home
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -50
+    langcode: en-gb
+    uuid: 7e4564d8-f96d-4b67-9cbc-d8dbffa26f9c
+    options: {  }
+  -
+    menu_name: footer-links
+    title: 'About us'
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -49
+    langcode: en-gb
+    uuid: f5ff1e38-3d7a-4dd2-a811-bc29ff13fb0c
+    options: {  }
+  -
+    menu_name: footer-links
+    title: Services
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -48
+    langcode: en-gb
+    uuid: 88fa5a69-0bc3-4d2f-84b2-9476c40bf4f6
+    options: {  }
+  -
+    menu_name: footer-links
+    title: Tenders
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -47
+    langcode: en-gb
+    uuid: d96bf358-2815-470c-b677-c385f53a67b2
+    options: {  }
+  -
+    menu_name: footer-links
+    title: Contact
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -46
+    langcode: en-gb
+    uuid: cbd588e4-0926-4043-be61-c13d49cea716
+    options: {  }
+  -
+    menu_name: footer-links
+    title: Careers
+    parent: null
+    uri: 'internal:#dummy'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -45
+    langcode: en-gb
+    uuid: 2dc8a988-844d-45c0-8ffe-f212ae166ca3
+    options: {  }
+  -
+    menu_name: footer-important-links
+    title: 'Terms & Conditions'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en-gb
+    uuid: c7fb16f0-0cfa-4e31-afc5-14b69a02361f
+    options: {  }
+  -
+    menu_name: footer-important-links
+    title: 'Privacy Policy'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en-gb
+    uuid: 5faa4ce5-e501-4c40-9eaa-fa2f5df7afc5
+    options: {  }
+  -
+    menu_name: footer-important-links
+    title: Sitemap
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en-gb
+    uuid: c5bf3c47-bb11-4d8c-a5a9-8d2551795928
+    options: {  }
+  -
+    menu_name: footer-important-links
+    title: 'Terms of Use'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en-gb
+    uuid: d529810a-92e3-4cc1-8280-efd19e0990e0
+    options: {  }
+  -
+    menu_name: footer-important-links
+    title: Disclaimer
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: 0
+    langcode: en-gb
+    uuid: 3fe0e5f6-7035-4b0a-a213-cc00f80f5c40
+    options: {  }
+  -
+    menu_name: utility-menu
+    title: 'Screen Reader Access'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -50
+    langcode: en-gb
+    uuid: 14a54863-7422-488d-ba9d-64f8f6877cec
+    options: {  }
+  -
+    menu_name: utility-menu
+    title: 'Skip to main content'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -49
+    langcode: en-gb
+    uuid: 721602f2-7478-4813-9ad0-7e30cc9fde7a
+    options: {  }
+  -
+    menu_name: utility-menu
+    title: Translate
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -48
+    langcode: en-gb
+    uuid: cb6ab4ec-6e28-415f-ac0c-414049d97f34
+    options: {  }
+  -
+    menu_name: utility-menu
+    title: 'Text Size (normal)'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -47
+    langcode: en-gb
+    uuid: fda1922b-1223-4db6-b37b-b1e9387758a4
+    options: {  }
+  -
+    menu_name: utility-menu
+    title: 'Text Size (decrease)'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -46
+    langcode: en-gb
+    uuid: ed281885-b591-4257-9ab6-6e59f7ab6dd0
+    options: {  }
+  -
+    menu_name: utility-menu
+    title: 'Text Size (increase)'
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -45
+    langcode: en-gb
+    uuid: 45737d02-017b-48ea-bff9-c4e6b5f1e12f
+    options: {  }
+  -
+    menu_name: main
+    title: 'About Us'
+    parent: null
+    uri: 'internal:/node/8'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -49
+    langcode: en-gb
+    uuid: 67804603-c2d7-4f5c-91b4-9e60b6681be7
+    options: {  }
+  -
+    menu_name: main
+    title: Information
+    parent: null
+    uri: 'internal:#'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -48
+    langcode: en-gb
+    uuid: 5c200228-3f31-4158-b1d7-af692baa34d7
+    options: {  }
+  -
+    menu_name: main
+    title: Services
+    parent: null
+    uri: 'internal:#'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -47
+    langcode: en-gb
+    uuid: c5e25f2f-27fe-4490-93cb-1552b2c0aadc
+    options: {  }
+  -
+    menu_name: main
+    title: Directory
+    parent: null
+    uri: 'internal:#'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -46
+    langcode: en-gb
+    uuid: 92d472b6-5d4c-419e-aa92-4ba441899342
+    options: {  }
+  -
+    menu_name: main
+    title: 'Contact Us'
+    parent: null
+    uri: 'internal:/node/9'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -45
+    langcode: en-gb
+    uuid: a7d7be84-35c9-492d-935e-dbc27de475f4
+    options: {  }
+  -
+    menu_name: main
+    title: 'Donate to Gaushala’s'
+    parent: null
+    uri: 'internal:#'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -44
+    langcode: en-gb
+    uuid: 502119ed-16af-4c56-835e-1cd11fcbb501
+    options: {  }
+  -
+    menu_name: main
+    title: 'GIS Maps'
+    parent: null
+    uri: 'https://onemapggm.gmda.gov.in/mcm_boundary/'
+    link_title: ''
+    description: null
+    enabled: true
+    expanded: false
+    weight: -43
+    langcode: en-gb
+    uuid: 0c24ea09-0ad9-479d-91e5-a9d4b072142c
+    options: {  }
+taxonomies:
+  branch:
+    -
+      vid: branch
+      tid: '4'
+      langcode: en-gb
+      name: Harayana
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 13d46e47-8da2-4385-ab6c-97ae2ebfd903
+    -
+      vid: branch
+      tid: '5'
+      langcode: en-gb
+      name: ULB
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: aca8709a-de2f-4976-87a5-10622e2076c5
+  department_type:
+    -
+      vid: department_type
+      tid: '1'
+      langcode: en-gb
+      name: 'Administrative Department'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 3b6bf6af-6dad-418f-9e01-dfd1a4d40a95
+    -
+      vid: department_type
+      tid: '3'
+      langcode: en-gb
+      name: 'Engineering Branch'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 1afdcc02-0a28-4eb2-ad52-1fe24c5540ac
+    -
+      vid: department_type
+      tid: '2'
+      langcode: en-gb
+      name: 'Office Reception Details'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: f65ec418-1156-40c1-afa5-354f645b3722
+  designation:
+    -
+      vid: designation
+      tid: '6'
+      langcode: en-gb
+      name: 'Additional Director'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 1c6d7fa3-a1bb-40a7-b108-c439da7a578d
+    -
+      vid: designation
+      tid: '28'
+      langcode: en-gb
+      name: Commissioner
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: b07760b1-ced0-4048-9343-cb05c67bf66c
+    -
+      vid: designation
+      tid: '8'
+      langcode: en-gb
+      name: CTP
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: cd82d7b7-de17-475e-8e5c-0c6b7b0b03ba
+    -
+      vid: designation
+      tid: '7'
+      langcode: en-gb
+      name: 'Joint Director'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: df69a65f-22f8-4ccf-87ff-d1a932abf2e4
+    -
+      vid: designation
+      tid: '26'
+      langcode: en-gb
+      name: Mayor
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 557287dd-ddf3-4ae2-b2f8-c6633031ecde
+    -
+      vid: designation
+      tid: '27'
+      langcode: en-gb
+      name: Member
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 3d26a879-2dfc-4aca-8cb0-a2118c157c73
+  services_type:
+    -
+      vid: services_type
+      tid: '25'
+      langcode: en-gb
+      name: Apps
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 362b5692-4430-4704-8f32-81639d46818d
+    -
+      vid: services_type
+      tid: '22'
+      langcode: en-gb
+      name: 'Birth & Death'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: a54dab73-9536-4360-81f4-f8912338ba30
+    -
+      vid: services_type
+      tid: '18'
+      langcode: en-gb
+      name: 'Building Plan'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: cc7bb4d1-4472-4de4-ad91-f1cfa66ed399
+    -
+      vid: services_type
+      tid: '12'
+      langcode: en-gb
+      name: 'Business Corner'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: ac82db9e-7b27-460c-876d-53ae3db0e8cc
+    -
+      vid: services_type
+      tid: '11'
+      langcode: en-gb
+      name: 'Citizne Corner'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 1b199246-93af-496f-9670-a7e05a0f803e
+    -
+      vid: services_type
+      tid: '19'
+      langcode: en-gb
+      name: CLU
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 60489c43-d415-4bb3-883f-191c1b75a862
+    -
+      vid: services_type
+      tid: '21'
+      langcode: en-gb
+      name: 'Conv. Resi Use'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: ee05b466-9535-4af5-833c-ad88ffdc379b
+    -
+      vid: services_type
+      tid: '23'
+      langcode: en-gb
+      name: Grievance
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 51e0e6c9-f469-4779-af3f-8c9f75bf2d75
+    -
+      vid: services_type
+      tid: '9'
+      langcode: en-gb
+      name: Notification
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 958b1b94-a80d-4b22-9747-77e4606cfcda
+    -
+      vid: services_type
+      tid: '20'
+      langcode: en-gb
+      name: 'Online Payment'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 0b441425-c8f0-4bea-8190-8075943f117b
+    -
+      vid: services_type
+      tid: '24'
+      langcode: en-gb
+      name: Others
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 7647be1e-58bc-4204-bfe8-33761a754d1c
+    -
+      vid: services_type
+      tid: '16'
+      langcode: en-gb
+      name: 'Property Tax & NDC'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 599e217d-65e3-43a1-a89e-360731376579
+    -
+      vid: services_type
+      tid: '14'
+      langcode: en-gb
+      name: 'Tax/Bill Payments'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 3b773354-322d-4500-92d7-18c40e40084b
+    -
+      vid: services_type
+      tid: '13'
+      langcode: en-gb
+      name: 'Useful links'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 0182d47d-e4d1-49fa-a496-7982cb93870b
+    -
+      vid: services_type
+      tid: '17'
+      langcode: en-gb
+      name: 'Water & Sewer'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 317dca91-90bc-4b73-94dd-f24b28fe0de4
+    -
+      vid: services_type
+      tid: '10'
+      langcode: en-gb
+      name: "What's new"
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 10bd8380-7ae3-47d0-bff7-561dc46c2481
+  tags: {  }

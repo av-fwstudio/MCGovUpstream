@@ -1,0 +1,49 @@
+uuid: 43ad63a5-0e1e-4b9a-9c3c-635583dedea2
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.department.body
+    - field.field.node.department.field_branch
+    - field.field.node.department.field_department_type
+    - field.field.node.department.field_designation
+    - field.field.node.department.field_email
+    - field.field.node.department.field_member_image
+    - field.field.node.department.field_name
+    - field.field.node.department.field_office_telepone_no
+    - field.field.node.department.field_show_on_frontpage
+    - field.field.node.department.field_ward_area
+    - node.type.department
+  module:
+    - text
+    - user
+id: node.department.teaser
+targetEntityType: node
+bundle: department
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_branch: true
+  field_department_type: true
+  field_designation: true
+  field_email: true
+  field_member_image: true
+  field_name: true
+  field_office_telepone_no: true
+  field_show_on_frontpage: true
+  field_ward_area: true
+  langcode: true

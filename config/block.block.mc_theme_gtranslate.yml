@@ -1,0 +1,20 @@
+uuid: 5ce378e4-322a-46e4-805e-e9eacf3795b1
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - gtranslate
+  theme:
+    - mc_theme
+id: mc_theme_gtranslate
+theme: mc_theme
+region: utility
+weight: -7
+provider: null
+plugin: gtranslate_block
+settings:
+  id: gtranslate_block
+  label: GTranslate
+  label_display: '0'
+  provider: gtranslate
+visibility: {  }

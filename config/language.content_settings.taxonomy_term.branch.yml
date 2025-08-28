@@ -1,0 +1,11 @@
+uuid: a8e6fedd-65f2-4ff8-8f42-bf62b03a2126
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.branch
+id: taxonomy_term.branch
+target_entity_type_id: taxonomy_term
+target_bundle: branch
+default_langcode: site_default
+language_alterable: false

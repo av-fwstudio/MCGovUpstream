@@ -1,0 +1,29 @@
+<section class="welcome-section">
+        <div class="container">
+            <div class="welcome-content">
+               {% if paragraph.field_image.entity.field_media_image is defined %}
+                {% set image_url = file_url(paragraph.field_image.entity.field_media_image.entity.uri.value) %}
+                <img src="{{ image_url }}" alt="Welcome image" class="welcome-image" />
+                {% endif %}
+                <div class="welcome-text-content">
+                    <h2 class="welcome-title">
+                        <img src="{{ directory }}/assets/images/img_mynaui_building_solid.svg" alt="Building" style="width: 46px; height: 46px;" />
+                        {{content.field_title|raw}}
+                    </h2>
+                    <div class="welcome-description">
+                       {{content.field_description|raw}}
+                    </div>
+                    {# <a href="#" class="btn-secondary">
+                        <img src="../assets/images/img_icons_deep_orange_400_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Read More
+                    </a> #}
+                    {% if paragraph.field_link is not empty %}
+                    {% set link = paragraph.field_link %}
+                    <a href="{{ link.uri|replace({'internal:': ''}) }}" class="btn-secondary">
+                        {{ link.title }}
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>

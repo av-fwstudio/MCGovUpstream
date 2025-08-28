@@ -1,0 +1,24 @@
+uuid: e82956a7-010d-4cf0-a5b5-bed4a2fe256e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.services_block
+  module:
+    - text
+id: paragraph.services_block.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: services_block
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

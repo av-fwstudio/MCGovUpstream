@@ -1,0 +1,22 @@
+uuid: 31520ee6-78b6-4001-b9e3-e0e51a182f9c
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - gtranslate
+  theme:
+    - manesar
+_core:
+  default_config_hash: biXKlyD_Bhnl5-E2eDM_BObxRld_KegxEubJhjUudsY
+id: manesar_gtranslate
+theme: manesar
+region: header_top
+weight: -3
+provider: null
+plugin: gtranslate_block
+settings:
+  id: gtranslate_block
+  label: GTranslate
+  label_display: '0'
+  provider: gtranslate
+visibility: {  }

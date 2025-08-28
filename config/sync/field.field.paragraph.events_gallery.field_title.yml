@@ -1,0 +1,24 @@
+uuid: d17d9fba-3b3a-4d40-85c5-0c5d16a95f75
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.events_gallery
+  module:
+    - text
+id: paragraph.events_gallery.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: events_gallery
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

@@ -1,0 +1,10 @@
+uuid: d32fb249-6fdf-44a0-abb0-1a7b15659cde
+langcode: en-gb
+status: true
+dependencies: {  }
+id: team_members_block
+label: 'Team Members Block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

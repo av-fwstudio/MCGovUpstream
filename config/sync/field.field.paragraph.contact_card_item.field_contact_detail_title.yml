@@ -1,0 +1,19 @@
+uuid: 23730e21-21de-4976-b68f-ac1dd3b14c06
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_detail_title
+    - paragraphs.paragraphs_type.contact_card_item
+id: paragraph.contact_card_item.field_contact_detail_title
+field_name: field_contact_detail_title
+entity_type: paragraph
+bundle: contact_card_item
+label: 'Contact Detail Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,35 @@
+uuid: 41525043-a985-4090-95ad-7ae8baabe65d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.downloads.field_download_item
+    - paragraphs.paragraphs_type.downloads
+  module:
+    - paragraphs
+id: paragraph.downloads.default
+targetEntityType: paragraph
+bundle: downloads
+mode: default
+content:
+  field_download_item:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

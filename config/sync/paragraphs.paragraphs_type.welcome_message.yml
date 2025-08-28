@@ -1,0 +1,10 @@
+uuid: be20dc2f-fa85-4389-a4ac-ec9791e10993
+langcode: en-gb
+status: true
+dependencies: {  }
+id: welcome_message
+label: 'Welcome Message'
+icon_uuid: null
+icon_default: null
+description: 'Displays a brief introductory message or greeting text, often shown on the homepage to welcome visitors and provide key highlights.'
+behavior_plugins: {  }

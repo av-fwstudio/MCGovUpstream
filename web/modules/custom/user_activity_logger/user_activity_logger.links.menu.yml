@@ -1,0 +1,6 @@
+user_activity_logger.admin:
+  title: 'User Activity Logs'
+  description: 'View custom user activity logs'
+  parent: system.admin_reports
+  route_name: user_activity_logger.admin_activity_log
+  weight: 100

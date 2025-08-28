@@ -1,0 +1,57 @@
+{% set total_count = rows|length %}
+{% set current_month_count = 0 %}
+
+{% set current_month = "now"|date("m") %}
+{% set current_year = "now"|date("Y") %}
+
+{% for row in rows %}
+	{# Access raw date value from a known field (adjust field name accordingly) #}
+	{% set date_string = row.fields.field_date.raw|default(null) %}
+	{% if date_string %}
+		{% set item_month = date(date_string)|date("m") %}
+		{% set item_year = date(date_string)|date("Y") %}
+		{% if item_month == current_month and item_year == current_year %}
+			{% set current_month_count = current_month_count + 1 %}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+
+<div class="dashboard-card green">
+	<div class="dashboard-header">
+		<div class="dashboard-title">
+			<div style="background-color: #047857; border-radius: 4px; padding: 8px;">
+				<img src="{{ directory }}/assets/images/img_vector_white_a700_14x20.svg" alt="Citizen" style="width: 20px; height: 14px;"/>
+			</div>
+			Citizen Corner
+		</div>
+		<div style="display: flex; align-items: center; gap: 10px;">
+			<span class="dashboard-badge green">5 New</span>
+			<div style="background-color: #047857; border-radius: 4px; padding: 8px;">
+				<button class="dashboard-play-btn"><img src="{{ directory }}/assets/images/img_vector.svg" alt="Arrow" style="width: 14px; height: 14px;"/></button>
+			</div>
+		</div>
+	</div>
+	<div class="dashboard-stats">
+		<div class="stat-item">
+			<div class="stat-number red">{{ current_month_count }}</div>
+			<div class="stat-label">This Month</div>
+		</div>
+		<div class="stat-item">
+			<div class="stat-number red">{{ total_count }}</div>
+			<div class="stat-label">Total</div>
+		</div>
+		<div class="stat-item">
+			<div class="stat-number green">96%</div>
+			<div class="stat-label">Updated</div>
+		</div>
+	</div>
+	<div class="dashboard-content">
+		<div class="notification-marquee">
+			{{ rows}}
+		</div>
+	</div>
+	<a href="/services/citizen-corner" class="view-more-btn green">
+		<img src="{{directory}}/assets/images/img_icons_7.svg" alt="Icon" style="width: 24px; height: 24px;"/>
+		View More
+	</a>
+</div>

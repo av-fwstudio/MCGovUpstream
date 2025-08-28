@@ -1,0 +1,29 @@
+uuid: e647ded9-2c80-4217-8f5c-86253f415fbd
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_helpline_icon
+    - media.type.image
+    - paragraphs.paragraphs_type.helpline_number_items
+id: paragraph.helpline_number_items.field_helpline_icon
+field_name: field_helpline_icon
+entity_type: paragraph
+bundle: helpline_number_items
+label: 'Helpline Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

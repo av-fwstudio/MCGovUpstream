@@ -1,0 +1,24 @@
+uuid: 62263ae8-54e0-4ed2-a2d0-c0bde757e780
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.download_item
+  module:
+    - text
+id: paragraph.download_item.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: download_item
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

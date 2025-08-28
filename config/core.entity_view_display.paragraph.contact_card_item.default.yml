@@ -1,0 +1,40 @@
+uuid: 238eb2f9-97db-49e1-8a7e-5354d543a0f7
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_card_item.field_contact_detail_icon
+    - field.field.paragraph.contact_card_item.field_contact_detail_title
+    - field.field.paragraph.contact_card_item.field_contact_detail_value
+    - paragraphs.paragraphs_type.contact_card_item
+id: paragraph.contact_card_item.default
+targetEntityType: paragraph
+bundle: contact_card_item
+mode: default
+content:
+  field_contact_detail_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_contact_detail_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_contact_detail_value:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

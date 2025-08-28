@@ -1,0 +1,33 @@
+<div class="para-contact-card">
+    <div class="contact-card">
+        <div class="row">
+            {% if content.field_contact_cards_with_heading is not empty %}
+                {% for item in paragraph.field_contact_cards_with_heading %}
+                    {% set sub_paragraph = item.entity %}
+                    <div class="col-md-4">
+                        <div class="main-title">{{ sub_paragraph.field_contact_heading.value|raw }}</div>
+
+                        {% if sub_paragraph.field_contact_detail_card is not empty %}
+                            {% for card in sub_paragraph.field_contact_detail_card %}
+                                {% set card_item = card.entity %}
+                                <div class="contact-card-wrapper">
+                                    <div class="contact-card-wrap">
+                                        <div class="image-wrap">
+                                            <div class="img">
+                                                <img src="{{ file_url(card_item.field_contact_detail_icon.entity.field_media_image.entity.uri.value) }}" alt="{{ card_item.field_contact_detail_icon.entity.field_media_image.alt }}" />
+                                            </div>
+                                        </div>
+                                        <div class="body">
+                                            <div class="title">{{ card_item.field_contact_detail_title.value|raw }}</div>
+                                            <div class="phone"><span class="title">Phone:</span> <a href="tel:{{ card_item.field_contact_detail_value.value|raw }}">{{ card_item.field_contact_detail_value.value|raw }}</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

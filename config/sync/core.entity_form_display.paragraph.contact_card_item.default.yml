@@ -1,0 +1,42 @@
+uuid: 9f69ea93-c832-4f15-a5bb-5413be560a85
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_card_item.field_contact_detail_icon
+    - field.field.paragraph.contact_card_item.field_contact_detail_title
+    - field.field.paragraph.contact_card_item.field_contact_detail_value
+    - paragraphs.paragraphs_type.contact_card_item
+  module:
+    - media_library
+id: paragraph.contact_card_item.default
+targetEntityType: paragraph
+bundle: contact_card_item
+mode: default
+content:
+  field_contact_detail_icon:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_contact_detail_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact_detail_value:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

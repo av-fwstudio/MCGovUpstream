@@ -1,0 +1,23 @@
+uuid: 9bdd638e-8bec-40e7-8219-47b7ac3607de
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.directory_block.field_directory_block_view
+    - paragraphs.paragraphs_type.directory_block
+  module:
+    - viewsreference
+id: paragraph.directory_block.default
+targetEntityType: paragraph
+bundle: directory_block
+mode: default
+content:
+  field_directory_block_view:
+    type: viewsreference_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

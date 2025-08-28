@@ -1,0 +1,21 @@
+uuid: 24bffd5a-82a0-4a76-91bf-fe95c377845b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_schedule_date
+    - node.type.events_gallery
+  module:
+    - datetime
+id: node.events_gallery.field_schedule_date
+field_name: field_schedule_date
+entity_type: node
+bundle: events_gallery
+label: 'Schedule Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

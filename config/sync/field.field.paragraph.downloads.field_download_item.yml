@@ -1,0 +1,103 @@
+uuid: 8393aa62-3465-4930-934c-f434b3cb031c
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_download_item
+    - paragraphs.paragraphs_type.download_item
+    - paragraphs.paragraphs_type.downloads
+  module:
+    - entity_reference_revisions
+id: paragraph.downloads.field_download_item
+field_name: field_download_item
+entity_type: paragraph
+bundle: downloads
+label: 'Download Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      download_item: download_item
+    negate: 0
+    target_bundles_drag_drop:
+      carousel_icon_item:
+        weight: 26
+        enabled: false
+      carousel_items:
+        weight: 27
+        enabled: false
+      carousel_list:
+        weight: 28
+        enabled: false
+      contact_card_item:
+        weight: 31
+        enabled: false
+      contact_cards_with_heading:
+        weight: 29
+        enabled: false
+      contact_cards_wrapper:
+        weight: 30
+        enabled: false
+      contact_us_address:
+        weight: 32
+        enabled: false
+      directory_block:
+        weight: 33
+        enabled: false
+      download_item:
+        weight: 35
+        enabled: true
+      downloads:
+        weight: 34
+        enabled: false
+      events_gallery:
+        weight: 36
+        enabled: false
+      helpline_number_items:
+        weight: 38
+        enabled: false
+      helpline_numbers:
+        weight: 37
+        enabled: false
+      key_officials:
+        weight: 39
+        enabled: false
+      latest_news_block:
+        weight: 40
+        enabled: false
+      mc_form:
+        weight: 41
+        enabled: false
+      office_contact_deatils:
+        weight: 42
+        enabled: false
+      office_contact_detail_item:
+        weight: 43
+        enabled: false
+      office_locations:
+        weight: 44
+        enabled: false
+      section_menu:
+        weight: 45
+        enabled: false
+      service_cards:
+        weight: 47
+        enabled: false
+      services_block:
+        weight: 46
+        enabled: false
+      team_members_block:
+        weight: 48
+        enabled: false
+      useful_links:
+        weight: 49
+        enabled: false
+      welcome_message:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

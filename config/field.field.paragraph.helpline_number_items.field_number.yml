@@ -1,0 +1,19 @@
+uuid: 2da592e4-feb5-41b8-8d23-4c4d1876a749
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_number
+    - paragraphs.paragraphs_type.helpline_number_items
+id: paragraph.helpline_number_items.field_number
+field_name: field_number
+entity_type: paragraph
+bundle: helpline_number_items
+label: Number
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

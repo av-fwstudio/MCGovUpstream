@@ -1,0 +1,27 @@
+uuid: 3f24b381-a2e7-41b6-8181-6d418615bc31
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - system.menu.manesar-main-navigation
+  module:
+    - system
+  theme:
+    - manesar
+_core:
+  default_config_hash: mUQJ4R-cDsbBNrrzEi-9CX6RiQ6ERemAGQyzQjBuISA
+id: manesar_manesarmainnavigation_2
+theme: manesar
+region: header
+weight: -3
+provider: null
+plugin: 'system_menu_block:manesar-main-navigation'
+settings:
+  id: 'system_menu_block:manesar-main-navigation'
+  label: 'manesar main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: true
+visibility: {  }

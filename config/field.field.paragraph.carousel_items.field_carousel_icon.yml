@@ -1,0 +1,29 @@
+uuid: 35d9d977-ec63-423c-b4a1-579192dde1d2
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_carousel_icon
+    - media.type.image
+    - paragraphs.paragraphs_type.carousel_items
+id: paragraph.carousel_items.field_carousel_icon
+field_name: field_carousel_icon
+entity_type: paragraph
+bundle: carousel_items
+label: 'Carousel Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

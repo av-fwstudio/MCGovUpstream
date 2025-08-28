@@ -1,0 +1,29 @@
+uuid: ce53017c-33fc-44db-bc61-21ba1bc1b8e8
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_event_gallery
+    - node.type.events_gallery
+    - paragraphs.paragraphs_type.events_gallery
+id: paragraph.events_gallery.field_event_gallery
+field_name: field_event_gallery
+entity_type: paragraph
+bundle: events_gallery
+label: 'Event Gallery'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      events_gallery: events_gallery
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

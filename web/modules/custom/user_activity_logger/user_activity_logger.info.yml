@@ -1,0 +1,7 @@
+name: 'User Activity Logger'
+type: module
+description: 'Logs user activities like create, update, delete of content permanently.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - node

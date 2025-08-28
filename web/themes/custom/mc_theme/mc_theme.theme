@@ -1,0 +1,106 @@
+<?php
+
+use Drupal\Core\Extension\ThemeHandlerInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\node\NodeInterface;
+use Drupal\file\Entity\File;
+use Drupal\system\Entity\Menu;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraph templates.
+ */
+function mc_theme_preprocess(array &$variables) {
+  /** @var \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler */
+  $theme_handler = \Drupal::service('theme_handler');
+
+  $theme_path = $theme_handler->getTheme('mc_theme')->getPath();
+  $variables['directory'] = '/' . $theme_path;
+}
+
+function mc_theme_preprocess_views_view_unformatted(&$variables) {
+  $theme_path = \Drupal::theme()->getActiveTheme()->getPath();
+  $base_path = \Drupal::request()->getBasePath();
+  $base_url = \Drupal::request()->getSchemeAndHttpHost();
+
+  // Full URLs for Twig
+  $variables['play_icon_path'] = $base_url . $base_path . '/sites/default/files/2025-08/play.png';
+  $variables['pause_icon_path'] = $base_url . $base_path . 'sites/default/files/2025-08/pause.png';
+
+  // Pass to JS via drupalSettings
+  $variables['#attached']['drupalSettings']['mcTheme'] = [
+    'playIcon' => $base_path . 'sites/default/files/2025-08/play.png',
+    'pauseIcon' => $base_path . 'sites/default/files/2025-08/pause.png',
+  ];
+}
+/**
+ * Implements hook_preprocess_block().
+ */
+function mc_theme_preprocess_block(array &$variables) {
+  if ($variables['plugin_id'] === 'page_title_block') {
+    $route_match = \Drupal::routeMatch();
+    $node = $route_match->getParameter('node');
+    if ($node instanceof NodeInterface &&
+      $node->hasField('field_page_title_bg_image') &&
+      !$node->get('field_page_title_bg_image')->isEmpty()) {
+      $variables['node_image'] = $node->get('field_page_title_bg_image')->view('default');
+    }
+  }
+  $important_links_menu = Menu::load('footer-important-links');
+  $citizen_services_menu = Menu::load('footer-citizen-services');
+
+  $important_links_title = $important_links_menu ? $important_links_menu->label() : '';
+  $citizen_services_title = $citizen_services_menu ? $citizen_services_menu->label() : '';
+
+  // Assign to template variables
+  $variables['footer_important_links_label'] = $important_links_title;
+  $variables['footer_citizen_services_label'] = $citizen_services_title;
+
+  if ($variables['plugin_id'] === 'block_content:1f518871-5aa4-422f-a3c7-5f013353e662') {
+    $node = \Drupal\node\Entity\Node::load(1);
+    if ($node) {
+      $variables['last_updated'] = \Drupal::service('date.formatter')->format(
+        $node->getChangedTime(),
+        'custom',
+        'j/n/Y'
+      );
+    }
+      // ---- Visitor Counter ----
+      $state = \Drupal::state();
+      $visits = (int) $state->get('site_visitor_count', 0);
+      $visits++;
+      $state->set('site_visitor_count', $visits);
+  
+      $variables['visitor_count'] = $visits;
+      // ---- Current Year ----
+      $variables['current_year'] = date('Y');
+  
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function mc_theme_cron() {
+  $today = strtotime('today');
+
+  // Load all published News & Events with expiry date set and already passed.
+  $nids = \Drupal::entityQuery('node')
+    ->condition('type', 'news_events') // News & Events
+    ->condition('status', 1) // published
+    ->exists('field_schedule_expiry_date')
+    ->condition('field_schedule_expiry_date', date('Y-m-d', $today), '<=')
+    ->execute();
+
+  if (!empty($nids)) {
+    $nodes = Node::loadMultiple($nids);
+    foreach ($nodes as $node) {
+      $expiry = strtotime($node->get('field_schedule_expiry_date')->value);
+      if ($expiry && $expiry <= $today) {
+        $node->setUnpublished();
+        $node->save();
+        \Drupal::logger('news_events')->notice('Node @nid unpublished due to expiry date.', ['@nid' => $node->id()]);
+      }
+    }
+  }
+}

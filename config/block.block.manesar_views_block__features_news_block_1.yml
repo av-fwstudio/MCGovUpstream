@@ -1,0 +1,24 @@
+uuid: 25a55156-0c2f-4002-923e-ed651a6c1772
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - views.view.features_news
+  module:
+    - views
+  theme:
+    - manesar
+id: manesar_views_block__features_news_block_1
+theme: manesar
+region: header_bottom
+weight: 0
+provider: null
+plugin: 'views_block:features_news-block_1'
+settings:
+  id: 'views_block:features_news-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

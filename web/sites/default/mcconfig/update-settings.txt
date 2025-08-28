@@ -1,0 +1,9 @@
+Add below code snippet in the "settings.php" file at the end.
+
+/**
+ * If there is a local settings file, then include it
+ */
+$local_settings = __DIR__ . "/mcconfig/settings.local.php";
+if (file_exists($local_settings)) {
+    include $local_settings;
+}

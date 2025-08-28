@@ -1,0 +1,14 @@
+user_activity_logger.admin_activity_log:
+  path: '/admin/user-activity-log'
+  defaults:
+    _controller: '\Drupal\user_activity_logger\Controller\UserActivityController::display'
+    _title: 'User Activity Log'
+  requirements:
+    _permission: 'administer users'
+user_activity_logger.export:
+  path: '/admin/reports/user-activity/export'
+  defaults:
+    _controller: '\Drupal\user_activity_logger\Controller\UserActivityController::export'
+    _title: 'Export User Activity'
+  requirements:
+    _permission: 'administer users'

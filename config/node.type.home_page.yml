@@ -1,0 +1,18 @@
+uuid: 01e209bb-60c1-48b9-a116-80ed753c1280
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Home Page'
+type: home_page
+description: 'Serves as the main landing page of the website, featuring key highlights, banners, and important links.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

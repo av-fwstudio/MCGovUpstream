@@ -1,0 +1,27 @@
+uuid: 09d7bce1-ea7e-4af1-9005-2d773a0ce82d
+langcode: en-gb
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e0f42089-47dd-4b76-b5b0-6e096aa46ad5'
+  module:
+    - block_content
+  theme:
+    - manesar
+_core:
+  default_config_hash: orhVPFbK7kK48jXWwVWXlDsBdzGqNjVHravAt__-uVU
+id: manesar_menutoggle
+theme: manesar
+region: header
+weight: -2
+provider: null
+plugin: 'block_content:e0f42089-47dd-4b76-b5b0-6e096aa46ad5'
+settings:
+  id: 'block_content:e0f42089-47dd-4b76-b5b0-6e096aa46ad5'
+  label: 'Menu toggle'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

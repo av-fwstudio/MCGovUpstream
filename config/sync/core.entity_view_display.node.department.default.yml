@@ -1,0 +1,112 @@
+uuid: e1cbbc9f-aa28-4497-8fdc-7eaa05d8df0b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.department.body
+    - field.field.node.department.field_branch
+    - field.field.node.department.field_department_type
+    - field.field.node.department.field_designation
+    - field.field.node.department.field_email
+    - field.field.node.department.field_member_image
+    - field.field.node.department.field_name
+    - field.field.node.department.field_office_telepone_no
+    - field.field.node.department.field_show_on_frontpage
+    - field.field.node.department.field_ward_area
+    - node.type.department
+  module:
+    - text
+    - user
+id: node.department.default
+targetEntityType: node
+bundle: department
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_branch:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_department_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_designation:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_member_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_office_telepone_no:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_show_on_frontpage:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_ward_area:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

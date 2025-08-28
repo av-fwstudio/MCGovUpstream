@@ -1,0 +1,27 @@
+name: 'MC Theme'
+type: theme
+description: 'Custom MC Theme for muncipal coroporation sites.'
+core_version_requirement: '^10'
+base theme: bootstrap_barrio
+
+logo: mlogo.svg
+libraries:
+  - 'mc_theme/global-styling'
+  - 'mc_theme/bootstrap-scripts'
+
+
+regions:
+  utility: "Utility Navigation"
+  header: "Header"
+  header_navigation: "Main Navigation"
+  slide_in_navigation: "Slide In Navigation"
+  notification: "Notification"
+  breadcrumb_title: "Breadcrumb & Title"
+  hero: "Hero"
+  content_top: "Content Top"
+  content: "Content"
+  sidebar_left: "Sidebar left"
+  sidebar_right: "Sidebar right"
+  content_bottom: "Content Bottom"
+  footer: "Footer"
+  footer_copyright: "Copyright"

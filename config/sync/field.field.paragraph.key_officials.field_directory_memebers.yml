@@ -1,0 +1,29 @@
+uuid: 5eef0e42-569c-4e75-89fb-6863a5851e14
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_directory_memebers
+    - node.type.department
+    - paragraphs.paragraphs_type.key_officials
+id: paragraph.key_officials.field_directory_memebers
+field_name: field_directory_memebers
+entity_type: paragraph
+bundle: key_officials
+label: 'Directory Memebers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      department: department
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

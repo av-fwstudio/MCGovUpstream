@@ -1,0 +1,20 @@
+uuid: f3e4a397-f00e-457d-8fb6-a8219c350934
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_online_services
+field_name: field_online_services
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

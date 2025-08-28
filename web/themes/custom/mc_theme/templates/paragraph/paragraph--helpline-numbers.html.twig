@@ -1,0 +1,35 @@
+<section class="emergency-section">
+	<div class="emergency-bg-circle left"></div>
+	<div class="emergency-bg-circle right"></div>
+	<div class="container">
+		<div class="emergency-content">
+			<h2 class="emergency-title">{{content.field_title|raw}}</h2>
+			<div class="emergency-subtitle">
+				{{content.field_sub_title|raw}}
+			</div>
+			<div class="emergency-grid">
+				{% for item in content.field_helpline_number_items %}
+					{% if item['#paragraph'] is defined %}
+						{% set number = item['#paragraph'] %}
+						<div class="emergency-card">
+							{% if number.field_helpline_icon.entity is not empty %}
+								<img src="{{ file_url(number.field_helpline_icon.entity.field_media_image.entity.uri.value) }}" alt="{{ number.field_helpline_icon.entity.field_media_image.alt|default('') }}" class="emergency-icon"/>
+							{% endif %}
+							<div class="emergency-number"><a href="tel:{{ number.field_number.value }}" class="emergency-number">{{ number.field_number.value }}</a></div>
+							<div class="emergency-service">{{ number.field_title.value }}</div>
+							<div class="emergency-description">{{ number.field_sub_title.value }}</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+
+			<div class="emergency-alert">
+				<img src="{{directory}}/assets/images/img_mdi_alert.svg" alt="Alert" class="emergency-alert-icon"/>
+				<div class="emergency-alert-text">
+					<span class="emergency-alert-title">Important :</span>
+					 {{content.field_alert_message|raw}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

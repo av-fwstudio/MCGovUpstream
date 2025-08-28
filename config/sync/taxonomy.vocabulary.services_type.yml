@@ -1,0 +1,9 @@
+uuid: f6c828e4-817f-4448-8c48-5a7db135a002
+langcode: en-gb
+status: true
+dependencies: {  }
+name: 'Services Type'
+vid: services_type
+description: 'Categorizes different types of services offered, such as Citizen Services, Business Services, Online Applications, etc., to enha'
+weight: 0
+new_revision: false

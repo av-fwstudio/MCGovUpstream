@@ -1,0 +1,22 @@
+uuid: a682578a-b71e-4866-9e22-5849f76d745c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - manesar
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: manesar_content
+theme: manesar
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

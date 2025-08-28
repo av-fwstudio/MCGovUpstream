@@ -1,0 +1,25 @@
+uuid: ccb9354f-43bb-4b75-9e27-85ea46b8387d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webform
+    - paragraphs.paragraphs_type.mc_form
+  module:
+    - webform
+id: paragraph.mc_form.field_webform
+field_name: field_webform
+entity_type: paragraph
+bundle: mc_form
+label: Webform
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

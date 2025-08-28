@@ -1,0 +1,24 @@
+uuid: 8083d533-492f-4be5-801a-f82c576d7394
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.online_services
+  module:
+    - text
+id: node.online_services.body
+field_name: body
+entity_type: node
+bundle: online_services
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

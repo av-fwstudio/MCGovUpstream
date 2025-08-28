@@ -1,0 +1,49 @@
+uuid: 112000d5-92d7-46bc-bebd-a086ba438dd5
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mc_form.field_description
+    - field.field.paragraph.mc_form.field_sub_title
+    - field.field.paragraph.mc_form.field_title
+    - field.field.paragraph.mc_form.field_webform
+    - paragraphs.paragraphs_type.mc_form
+  module:
+    - text
+    - webform
+id: paragraph.mc_form.default
+targetEntityType: paragraph
+bundle: mc_form
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_sub_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_webform:
+    type: webform_entity_reference_entity_view
+    label: above
+    settings:
+      source_entity: true
+      lazy: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,9 @@
+<div class="info-cards">
+  {% set colors = ['orange', 'blue', 'red', 'green'] %}
+  {% for row in rows %}
+    {% set color_class = colors[loop.index0]|default('default') %}
+    <div class="info-card {{ color_class }}">
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>

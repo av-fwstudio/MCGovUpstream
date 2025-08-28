@@ -1,0 +1,104 @@
+uuid: 9c54ac7c-a913-47e8-b2ef-b3ae6de7f35f
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.tender.body
+    - field.field.node.tender.field_document
+    - field.field.node.tender.field_icon
+    - field.field.node.tender.field_serial_number
+    - field.field.node.tender.field_service_link
+    - field.field.node.tender.field_service_type
+    - field.field.node.tender.field_status
+    - field.field.node.tender.field_tender_schedule_date
+    - node.type.tender
+  module:
+    - datetime_range
+    - link
+    - options
+    - text
+    - user
+id: node.tender.default
+targetEntityType: node
+bundle: tender
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_document:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_serial_number:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_service_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_service_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_status:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_tender_schedule_date:
+    type: daterange_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      from_to: both
+      separator: '-'
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

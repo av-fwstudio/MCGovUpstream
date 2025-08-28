@@ -1,0 +1,29 @@
+uuid: a7be339b-ebf6-4458-963b-c1a04be50223
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_service_cards
+    - paragraphs.paragraphs_type.service_cards
+  module:
+    - viewsreference
+id: paragraph.service_cards.field_service_cards
+field_name: field_service_cards
+entity_type: paragraph
+bundle: service_cards
+label: 'Service Cards'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views: {  }
+  enabled_settings: {  }
+field_type: viewsreference

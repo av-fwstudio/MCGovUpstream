@@ -1,0 +1,10 @@
+uuid: 3850abdb-bf02-4d8a-9961-b0e072837008
+langcode: en-gb
+status: true
+dependencies: {  }
+id: directory_block
+label: 'Directory Block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

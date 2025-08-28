@@ -1,0 +1,29 @@
+uuid: 5fb0f6cd-2b4d-474d-9cfa-dfdc798168ee
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_online_services
+    - node.type.online_services
+    - paragraphs.paragraphs_type.services_block
+id: paragraph.services_block.field_online_services
+field_name: field_online_services
+entity_type: paragraph
+bundle: services_block
+label: 'Online Services'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      online_services: online_services
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

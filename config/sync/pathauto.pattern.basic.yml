@@ -1,0 +1,31 @@
+uuid: de2a9868-99fc-460a-ac93-6c7937a9e20c
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - node
+id: basic
+label: Basic
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  c5147a6b-1418-495d-bb32-cc05a5791fe5:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c5147a6b-1418-495d-bb32-cc05a5791fe5
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      department: department
+      events_gallery: events_gallery
+      faq: faq
+      home_page: home_page
+      news_events: news_events
+      online_services: online_services
+      page: page
+      tender: tender
+      webform: webform
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,18 @@
+<div class="news-ticker">
+  <div class="container">
+    <div class="ticker-content">
+      <div class="ticker-label">
+{#        <img src="{{ directory }}/assets/images/img_heroicons_speak.svg" alt="News" style="width: 16px; height: 16px;" />#}
+        <a href="/news-events"><span>Latest News</span></a>
+        <button class="news-play"><img src="/sites/default/files/2025-08/play.png" alt="Play"/></button>
+      </div>
+
+      <div class="ticker-text">
+        {% for row in rows %}
+          {{ row.content }}
+          <img src="{{ directory }}/assets/images/img_material_symbols_star_outline.svg" alt="Star" style="width: 24px; height: 24px; margin-left: 10px;" />
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

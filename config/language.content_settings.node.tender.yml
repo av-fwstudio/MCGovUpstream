@@ -1,0 +1,11 @@
+uuid: d0391154-269b-4e8a-815b-cad75a87006e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.tender
+id: node.tender
+target_entity_type_id: node
+target_bundle: tender
+default_langcode: site_default
+language_alterable: false

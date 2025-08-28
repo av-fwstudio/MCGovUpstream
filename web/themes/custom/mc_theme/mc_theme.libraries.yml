@@ -1,0 +1,46 @@
+global-styling:
+  css:
+    theme:
+      dist/css/style.css: {}
+      assets/css/page.css: {}
+      assets/css/slick.css: {}
+      assets/css/slick-theme.css: {}
+      assets/css/slider.css: {}
+  js:
+    assets/js/scripts.js: {}
+    assets/js/slick.js: {}
+    assets/js/slick.min.js: {}
+    assets/js/slick-directory.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+bootstrap-scripts:
+  js: 
+    https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js:
+      type: external
+      minified: true
+      defer: true
+      attributes:
+        crossorigin: anonymous
+        integrity: "sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  dependencies:
+    - core/jquery
+    - core/js-cookie
+    - core/drupal
+    - core/once
+
+zoom-gallery:
+  version: 1.x
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js:
+      type: external
+      minified: true
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css:
+        type: external
+        minified: true
+  dependencies:
+    - core/jquery

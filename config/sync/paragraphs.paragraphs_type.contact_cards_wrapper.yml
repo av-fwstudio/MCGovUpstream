@@ -1,0 +1,10 @@
+uuid: f182feff-c772-4648-b57c-006e922503da
+langcode: en-gb
+status: true
+dependencies: {  }
+id: contact_cards_wrapper
+label: 'Contact Cards Wrapper'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

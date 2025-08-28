@@ -1,0 +1,10 @@
+uuid: b174a0f8-f5c9-4673-9833-9d40abd0910a
+langcode: en-gb
+status: true
+dependencies: {  }
+id: latest_news_block
+label: 'Latest News Block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,11 @@
+uuid: 0d73a971-8a49-4b14-894a-2b24640a956a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.online_services
+id: node.online_services
+target_entity_type_id: node
+target_bundle: online_services
+default_langcode: site_default
+language_alterable: false

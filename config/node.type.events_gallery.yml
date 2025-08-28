@@ -1,0 +1,18 @@
+uuid: f17dc6c6-0f49-4470-94b0-c897d27173d5
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Events Gallery'
+type: events_gallery
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

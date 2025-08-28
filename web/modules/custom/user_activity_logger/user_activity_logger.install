@@ -1,0 +1,84 @@
+<?php
+
+function user_activity_logger_schema() {
+  $schema['user_activity_log'] = [
+    'description' => 'Stores user activity logs.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'username' => [
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'action' => [
+        'type' => 'varchar',
+        'length' => 64,
+      ],
+      'entity_type' => [
+        'type' => 'varchar',
+        'length' => 64,
+      ],
+      'entity_id' => [
+        'type' => 'int',
+      ],
+      'ip_address' => [
+        'type' => 'varchar',
+        'length' => 64,
+      ],
+      'mac_address' => [
+        'type' => 'varchar',
+        'length' => 64,
+      ],
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Change entity_id column from INT to VARCHAR to support string IDs.
+ */
+function user_activity_logger_update_8111() {
+  // Use the schema API to change the column.
+  $spec = [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+  ];
+
+  // Change the field using Schema API.
+  \Drupal::database()->schema()->changeField(
+    'user_activity_log',  // table
+    'entity_id',          // column to change
+    'entity_id',          // new column name (same)
+    $spec                 // new specification
+  );
+}
+
+/**
+ * Add entity_label column to user_activity_log table.
+ */
+function user_activity_logger_update_8112() {
+  if (!\Drupal::database()->schema()->fieldExists('user_activity_log', 'entity_label')) {
+    \Drupal::database()->schema()->addField(
+      'user_activity_log',
+      'entity_label',
+      [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ]
+    );
+  }
+}
