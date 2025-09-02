@@ -86,7 +86,7 @@
 # files to other locations where it scaffolds files that are not
 # already ignored. We must also ignore these generated files.
 /web/**/.gitignore
-/composer.lock
+
 
 # Other common rules
 # ------------------
