@@ -1,6 +1,6 @@
 uuid: 1f5369ed-699f-402d-ace3-37b78db50c8d
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ _core:
   default_config_hash: HLQY2xgby8K3vN_98hiOSasOhm9pdCsH234-s0duJ8Q
 id: mc_theme_page_title
 theme: mc_theme
-region: notification
+region: utility
 weight: -11
 provider: null
 plugin: page_title_block

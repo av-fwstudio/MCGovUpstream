@@ -1,9 +1,0 @@
-uuid: 764c8fd0-0d7c-463d-b8ec-5b48266f304e
-langcode: en-gb
-status: true
-dependencies: {  }
-name: Designation
-vid: designation
-description: 'Lists job titles or roles within the organization (e.g., Director, Manager, Clerk). Useful for associating personnel with their '
-weight: 0
-new_revision: false

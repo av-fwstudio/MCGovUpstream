@@ -27,6 +27,7 @@ include __DIR__ . "/settings.pantheon.php";
 
 /**
  * If there is a local settings file, then include it
+ * Change MCConfig => MCSetting on your local
  */
 $local_settings = __DIR__ . "/mcconfig/settings.local.php";
 if (file_exists($local_settings)) {
