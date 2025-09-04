@@ -1,9 +1,10 @@
 _core:
   default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
 langcode: en-gb
+uuid: 8a70cac4-9b65-470b-8ba6-b730ad03af55
 name: 'Municipal Corporation'
 mail: bhumikamadan@fabwebstudio.com
-slogan: ''
+slogan: Yamunanagar-Jagadhri
 page:
   403: ''
   404: ''

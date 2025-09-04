@@ -1,0 +1,121 @@
+uuid: 4171e5ed-9abe-4762-a9b0-9bfe8fa53f54
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - node.type.article
+    - node.type.department
+    - node.type.downloads
+    - node.type.events_gallery
+    - node.type.faq
+    - node.type.home_page
+    - node.type.news_events
+    - node.type.online_services
+    - node.type.page
+    - node.type.tender
+    - node.type.webform
+    - taxonomy.vocabulary.branch
+    - taxonomy.vocabulary.department_type
+    - taxonomy.vocabulary.designation
+    - taxonomy.vocabulary.services_type
+    - taxonomy.vocabulary.tags
+  module:
+    - media
+    - node
+    - system
+    - taxonomy
+    - toolbar
+id: mc_admin
+label: 'MC admin'
+weight: 6
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer actions'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer users'
+  - 'create article content'
+  - 'create audio media'
+  - 'create department content'
+  - 'create document media'
+  - 'create downloads content'
+  - 'create events_gallery content'
+  - 'create faq content'
+  - 'create home_page content'
+  - 'create image media'
+  - 'create news_events content'
+  - 'create online_services content'
+  - 'create page content'
+  - 'create remote_video media'
+  - 'create tender content'
+  - 'create terms in branch'
+  - 'create terms in department_type'
+  - 'create terms in designation'
+  - 'create terms in services_type'
+  - 'create terms in tags'
+  - 'create video media'
+  - 'create webform content'
+  - 'delete any article content'
+  - 'delete any audio media'
+  - 'delete any department content'
+  - 'delete any document media'
+  - 'delete any image media'
+  - 'delete any remote_video media'
+  - 'delete any video media'
+  - 'delete downloads revisions'
+  - 'delete faq revisions'
+  - 'delete home_page revisions'
+  - 'delete news_events revisions'
+  - 'delete online_services revisions'
+  - 'delete own news_events content'
+  - 'delete own page content'
+  - 'delete page revisions'
+  - 'delete tender revisions'
+  - 'delete term revisions in branch'
+  - 'delete term revisions in department_type'
+  - 'delete term revisions in designation'
+  - 'delete term revisions in services_type'
+  - 'delete term revisions in tags'
+  - 'delete terms in branch'
+  - 'delete terms in department_type'
+  - 'delete terms in designation'
+  - 'delete terms in services_type'
+  - 'delete terms in tags'
+  - 'delete webform revisions'
+  - 'edit any article content'
+  - 'edit any department content'
+  - 'edit any downloads content'
+  - 'edit any events_gallery content'
+  - 'edit any faq content'
+  - 'edit any home_page content'
+  - 'edit any news_events content'
+  - 'edit any online_services content'
+  - 'edit any page content'
+  - 'edit any tender content'
+  - 'edit any webform content'
+  - 'edit own article content'
+  - 'edit own department content'
+  - 'edit own downloads content'
+  - 'edit own events_gallery content'
+  - 'edit own faq content'
+  - 'edit own home_page content'
+  - 'edit own news_events content'
+  - 'edit own online_services content'
+  - 'edit own page content'
+  - 'edit own tender content'
+  - 'edit own webform content'
+  - 'edit terms in branch'
+  - 'edit terms in department_type'
+  - 'edit terms in designation'
+  - 'edit terms in services_type'
+  - 'edit terms in tags'
+  - 'view own unpublished content'
+  - 'view the administration theme'

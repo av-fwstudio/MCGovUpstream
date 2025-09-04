@@ -1,0 +1,14 @@
+uuid: 4e0c8f05-f7dd-47f3-bf3c-4e9a5eab5c64
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.mc_admin
+  module:
+    - user
+id: user_remove_role_action.mc_admin
+label: 'Remove the MC admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: mc_admin

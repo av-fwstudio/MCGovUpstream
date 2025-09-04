@@ -1,0 +1,8 @@
+services:
+  user_activity_logger.tfa_access_check:
+    class: Drupal\user_activity_logger\Access\TfaAccessCheck
+    arguments: ['@request_stack']
+  user_activity_logger.login_subscriber:
+    class: Drupal\user_activity_logger\EventSubscriber\UserLoginSubscriber
+    tags:
+      - { name: event_subscriber }

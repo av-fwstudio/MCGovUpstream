@@ -4,10 +4,15 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Entity\EntityInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_user_login().
  */
 function user_activity_logger_user_login(AccountInterface $account) {
+  // Log the login
   user_activity_logger_log($account, 'login');
 }
 
@@ -51,8 +56,7 @@ function user_activity_logger_entity_insert(EntityInterface $entity) {
     $request = $request_stack->getCurrentRequest();
     $ip = $request ? $request->getClientIp() : 'unknown';
   
-    // Optional: safely get MAC address (not recommended for production use).
-    // Will only work on the server (not user's actual device).
+    // Get MAC address.
     $mac = '';
     if (stripos(PHP_OS, 'WIN') === 0) {
       $mac = exec('getmac');
@@ -102,12 +106,161 @@ function user_activity_logger_admin_paths_alter(&$paths) {
         'path' => "/admin/content", // filtered page
       ],
     ];
-
     foreach ($actions as $action) {
       if ($account->hasPermission($action['permission'])) {
-        // Mark this path as admin theme path.
+       
         $paths[$action['path']] = TRUE;
       }
+    }
+  }
+}
+
+function generate_otp($length = 6) {
+  return str_pad(random_int(0, pow(10, $length) - 1), $length, '0', STR_PAD_LEFT);
+}
+
+function store_otp_for_user(AccountInterface $account, $otp) {
+  $session = \Drupal::requestStack()->getCurrentRequest()->getSession();
+  $session->set('tfa_otp_' . $account->id(), $otp);
+  $session->set('tfa_otp_time_' . $account->id(), time());
+}
+
+function send_otp_email(AccountInterface $account, $otp) {
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $module = 'user_activity_logger';
+  $key = 'user_login';
+  $to = 'bhumikamadan@fabwebstudio.com';
+  $params = [
+    'title' => 'Your OTP Code',
+    'message' => 'Your One-Time Password (OTP) is: ' . $otp,
+  ];
+  $langcode = $account->getPreferredLangcode();
+  $send = true;
+
+  $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+
+  return $result['result'] ?? false;
+}
+
+
+/**  
+* Implements hook_mail(). 
+*/
+
+function user_activity_logger_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'user_login':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = !empty($params['title']) ? $params['title'] : t('Login Notification');
+      $message['body'][] = !empty($params['message']) ? $params['message'] : t('A new user has logged in.');
+      break;
+
+    case 'otp':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('Your OTP Code');
+      $message['body'][] = t('Your One-Time Password (OTP) is: @otp', ['@otp' => $params['otp']]);
+      break;
+  }
+}
+
+
+
+function send_notification() {
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $module = 'user_activity_logger'; 
+  $key = 'user_login';
+  $to = 'bhumikamadan@fabwebstudio.com';
+  $params = [
+    'message' => 'Testing Notification',
+    'title' => 'Your Notification',
+  ];
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $send = true;
+
+  $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+
+  if ($result['result'] !== true) {
+    \Drupal::messenger()->addError(t('There was a problem sending your email notification to @email.', ['@email' => $to]));
+  }
+  else {
+    \Drupal::messenger()->addStatus(t('An email notification has been sent to @email.', ['@email' => $to]));
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for user login form.
+ */
+function user_activity_logger_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Remove core validate/submit.
+  $form['#validate'] = [];
+  $form['#submit'] = [];
+
+  // Add our custom handlers.
+  $form['#validate'][] = 'user_activity_logger_user_login_validate';
+  $form['#submit'][] = 'user_activity_logger_user_login_submit';
+}
+
+/**
+ * Custom login validate: only checks username+password.
+ */
+function user_activity_logger_user_login_validate($form, FormStateInterface $form_state) {
+  $username = $form_state->getValue('name');
+  $password = $form_state->getValue('pass');
+
+  $accounts = \Drupal::entityTypeManager()
+    ->getStorage('user')
+    ->loadByProperties(['name' => $username]);
+  $account = $accounts ? reset($accounts) : NULL;
+
+  if (!$account || !\Drupal::service('password')->check($password, $account->getPassword())) {
+    $form_state->setErrorByName('name', t('Invalid username or password.'));
+    return;
+  }
+
+  // Save UID in private tempstore for OTP step (not logged in yet!).
+  $store = \Drupal::service('tempstore.private')->get('user_activity_logger');
+  $store->set('pending_tfa_uid', $account->id());
+}
+
+/**
+ * Custom login submit: generate OTP + redirect.
+ */
+function user_activity_logger_user_login_submit($form, FormStateInterface $form_state) {
+  $store = \Drupal::service('tempstore.private')->get('user_activity_logger');
+  $uid = $store->get('pending_tfa_uid');
+  if (!$uid) {
+    \Drupal::messenger()->addError(t('Something went wrong. Please try again.'));
+    $form_state->setRedirect('user.login');
+    return;
+  }
+
+  $account = \Drupal\user\Entity\User::load($uid);
+
+  // Generate and store OTP.
+  $otp = rand(100000, 999999);
+  $store->set('pending_tfa_otp', $otp);
+  $store->set('pending_tfa_time', \Drupal::time()->getCurrentTime());
+
+  // Send OTP.
+  \Drupal::service('plugin.manager.mail')->mail(
+    'user_activity_logger',
+    'otp',
+    $account->getEmail(),
+    $account->getPreferredLangcode(),
+    ['otp' => $otp]
+  );
+
+  // Redirect to OTP verify form.
+  $form_state->setRedirect('user_activity_logger.tfa_verify');
+}
+function user_activity_logger_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Block user profile edit form.
+  if ($form_id === 'user_form') {
+    $account = \Drupal::currentUser();
+    // Allow only administrators to edit their profile.
+    if (!$account->hasRole('administrator')) {
+      \Drupal::messenger()->addError(t('You are not allowed to edit your profile.'));
+      throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
     }
   }
 }

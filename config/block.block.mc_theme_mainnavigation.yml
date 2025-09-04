@@ -10,8 +10,8 @@ dependencies:
     - mc_theme
 id: mc_theme_mainnavigation
 theme: mc_theme
-region: header_navigation
-weight: -12
+region: header
+weight: -11
 provider: null
 plugin: 'system_menu_block:main'
 settings:

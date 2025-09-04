@@ -1,8 +1,9 @@
-uuid: 67fb3bd0-6d02-40b2-af7c-9f85ccd7fa7e
+uuid: f33328ae-dac5-4583-abab-5458145a3540
 langcode: en-gb
 status: true
 dependencies:
   module:
+    - block_class
     - system
     - user_activity_logger
   theme:
@@ -19,6 +20,11 @@ settings:
   label_display: visible
   provider: user_activity_logger
 visibility:
+  response_status:
+    id: response_status
+    negate: false
+    status_codes:
+      - 200
   request_path:
     id: request_path
     negate: false

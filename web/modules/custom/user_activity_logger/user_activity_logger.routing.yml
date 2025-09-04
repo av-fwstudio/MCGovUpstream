@@ -12,3 +12,12 @@ user_activity_logger.export:
     _title: 'Export User Activity'
   requirements:
     _permission: 'administer users'
+user_activity_logger.tfa_verify:
+  path: '/user/tfa-verify'
+  defaults:
+    _form: '\Drupal\user_activity_logger\Form\TfaUserVerificationForm'
+    _title: 'Two-Factor Verification'
+  requirements:
+    _access: 'TRUE'
+
+

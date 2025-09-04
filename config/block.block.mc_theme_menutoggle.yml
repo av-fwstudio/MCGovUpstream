@@ -10,8 +10,8 @@ dependencies:
     - mc_theme
 id: mc_theme_menutoggle
 theme: mc_theme
-region: header_navigation
-weight: -11
+region: header
+weight: -10
 provider: null
 plugin: 'block_content:45bda342-8c49-4997-bcb9-ddf270c946c3'
 settings:

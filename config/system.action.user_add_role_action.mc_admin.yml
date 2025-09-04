@@ -1,0 +1,14 @@
+uuid: 149f1adc-f6c5-47a9-bcc2-91f49610f53b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.mc_admin
+  module:
+    - user
+id: user_add_role_action.mc_admin
+label: 'Add the MC admin role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: mc_admin
