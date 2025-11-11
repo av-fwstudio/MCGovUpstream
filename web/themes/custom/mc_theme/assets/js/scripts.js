@@ -11,6 +11,35 @@
         }
       }, 500);
 
+      // Only external links and document links open in new tab
+      jQuery(once('open-new-tab', 'a')).each(function () {
+        var $link = jQuery(this);
+        if ($link.closest('#toolbar-administration, .toolbar').length) {
+          return;
+        }
+
+        var href = $link.attr('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+          return;
+        }
+
+        // File extensions to open in new tab
+        var fileExtensions = /\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
+
+        // Check if external or document link
+        var isExternal = href.startsWith('http') && !href.startsWith(window.location.origin);
+        var isDocument = fileExtensions.test(href);
+
+        if (isExternal || isDocument) {
+          $link.attr({
+            target: '_blank',
+            rel: 'noopener noreferrer'
+          });
+        } else {
+          $link.removeAttr('target rel');
+        }
+      });
+
       var $nav = $('.region-slide-in-navigation');
 
       // Works for any level of expanded menu
@@ -34,44 +63,52 @@
         $(this).parents('.region-utility').find('#block-mc-theme-searchform').toggleClass('active')
       });
 
-      // Increase font size on click
+      // Base font size in %
       var defFontSize = 62.5;
+
+      // Initialize counter
       window.Counter = { value: 1 };
 
       // Load from cookie
       var textSizeUtility = parseInt(Cookies.get('textSizeUtility'));
       if (textSizeUtility && textSizeUtility >= 1 && textSizeUtility <= 10) {
         Counter.value = textSizeUtility;
-        var newFontSize = defFontSize + (2.5 * Counter.value);
+      }
+
+      // Apply font size based on current Counter value
+      function applyFontSize() {
+        var newFontSize = defFontSize + 2.5 * (Counter.value - 1); // Corrected calculation
         $('html').css('font-size', newFontSize + '%');
+        Cookies.set('textSizeUtility', Counter.value);
+        updateFontSizeButtons();
       }
 
-      // Update button states
+      // Update button disabled states
       function updateFontSizeButtons() {
-        $('.menu--utility-menu').find('.menu .menu-item > .text-size-decrease').toggleClass('disabled', Counter.value <= 1);
-        $('.menu--utility-menu').find('.menu .menu-item > .text-size-increase').toggleClass('disabled', Counter.value >= 10);
+        var $menu = $('.menu--utility-menu').find('.menu .menu-item');
+        $menu.find('.text-size-decrease').toggleClass('disabled', Counter.value <= 1);
+        $menu.find('.text-size-increase').toggleClass('disabled', Counter.value >= 10);
       }
 
+      // Increase font size
       $('.menu--utility-menu').find('.menu .menu-item > .text-size-increase').click(function (e) {
         e.preventDefault();
         if (Counter.value < 10) {
           Counter.value++;
-          $('html').css('font-size', (defFontSize + 2.5 * Counter.value) + '%');
-          Cookies.set('textSizeUtility', Counter.value);
-          updateFontSizeButtons();
+          applyFontSize();
         }
       });
 
-      $('.menu--utility-menu').find('.menu .menu-item >.text-size-decrease').click(function (e) {
+      // Decrease font size
+      $('.menu--utility-menu').find('.menu .menu-item > .text-size-decrease').click(function (e) {
         e.preventDefault();
         if (Counter.value > 1) {
           Counter.value--;
-          $('html').css('font-size', (defFontSize + 2.5 * Counter.value) + '%');
-          Cookies.set('textSizeUtility', Counter.value);
-          updateFontSizeButtons();
+          applyFontSize();
         }
       });
 
+      // Reset to default font size
       $('.menu--utility-menu').find('.menu .menu-item > .text-size-normal').click(function (e) {
         e.preventDefault();
         Counter.value = 1;
@@ -79,12 +116,13 @@
         Cookies.set('textSizeUtility', Counter.value);
         updateFontSizeButtons();
       });
-      // Set initial state
-      updateFontSizeButtons();
+
+      // Initial setup
+      applyFontSize();
 
 
       $(document).ready(function () {
-        const $menuToggle = $('#block-mc-theme-menutoggle').find('button.push-menu-toggle');
+        const $menuToggle = $('#block-mc-theme-menutoggle button.push-menu-toggle, #block-mc-theme-menutoggle-2 button.push-menu-toggle');
         const $pushNav = $('.layout-push-navigation');
         $menuToggle.on('click', function (e) {
           e.stopPropagation();
@@ -156,26 +194,10 @@
           image.attr('alt', 'Play');
         }
       });
-      $('.navigation-header .nav-header-content .menu--main .menu-level-0 li > a').on('click', function(e) {
+      $('.main-header-content .menu--main .menu-level-0 li > a').on('click', function(e) {
         e.stopImmediatePropagation();
         window.location.href = $(this).attr('href');
       });
-        $('.region-slide-in-navigation .menu--main .menu-level-0 li > a').on('click', function(e) {
-            e.stopImmediatePropagation();
-            window.location.href = $(this).attr('href');
-        });
-        const $menu = $('.region-slide-in-navigation');
-        $menu.off('click.menuToggle');
-        $menu.on('click.menuToggle', '.menu--main .menu li.dropdown-item > .fa-angle-down', function (e) {
-            e.preventDefault();
-            const $clickedItem = $(this).closest('li.dropdown-item');
-            if ($clickedItem.hasClass('active')) {
-                $clickedItem.removeClass('active');
-            } else {
-                $clickedItem.siblings('li.dropdown-item').removeClass('active');
-                $clickedItem.addClass('active');
-            }
-        });
       // gallery
       $('.image-popup').magnificPopup({
         type: 'image',
@@ -183,6 +205,15 @@
           enabled: true,
           closeBtnInside: true
         }
+      });
+      $('.event-card').each(function () {
+        $(this).find('.gallery-popup').magnificPopup({
+          type: 'image',
+          gallery: {
+            enabled: true,
+            closeBtnInside: true
+          }
+        });
       });
     }
   };

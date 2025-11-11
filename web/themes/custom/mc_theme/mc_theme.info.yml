@@ -4,7 +4,7 @@ description: 'Custom MC Theme for muncipal coroporation sites.'
 core_version_requirement: '^10'
 base theme: bootstrap_barrio
 
-logo: mlogo.svg
+logo: header.svg
 libraries:
   - 'mc_theme/global-styling'
   - 'mc_theme/bootstrap-scripts'
@@ -13,7 +13,6 @@ libraries:
 regions:
   utility: "Utility Navigation"
   header: "Header"
-  header_navigation: "Main Navigation"
   slide_in_navigation: "Slide In Navigation"
   notification: "Notification"
   breadcrumb_title: "Breadcrumb & Title"

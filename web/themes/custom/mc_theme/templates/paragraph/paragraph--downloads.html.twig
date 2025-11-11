@@ -67,7 +67,7 @@
                     {% if media %}
                         {% set file = media.field_media_document.entity %}
                         {% if file %}
-                            {% set file_url = file.url %}
+                            {% set file_url = file_url(file.uri.value) %}
                             <tr>
                                 <td>{{ count }}</td>
                                 <td>{{ paragraph.field_title.value }}</td>

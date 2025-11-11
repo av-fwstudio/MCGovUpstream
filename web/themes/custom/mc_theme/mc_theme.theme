@@ -6,6 +6,8 @@ use Drupal\node\NodeInterface;
 use Drupal\file\Entity\File;
 use Drupal\system\Entity\Menu;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Datetime\DateFormatterInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for paragraph templates.
@@ -33,49 +35,89 @@ function mc_theme_preprocess_views_view_unformatted(&$variables) {
     'pauseIcon' => $base_path . 'sites/default/files/2025-08/pause.png',
   ];
 }
+
 /**
  * Implements hook_preprocess_block().
  */
 function mc_theme_preprocess_block(array &$variables) {
-  if ($variables['plugin_id'] === 'page_title_block') {
-    $route_match = \Drupal::routeMatch();
-    $node = $route_match->getParameter('node');
-    if ($node instanceof NodeInterface &&
-      $node->hasField('field_page_title_bg_image') &&
-      !$node->get('field_page_title_bg_image')->isEmpty()) {
-      $variables['node_image'] = $node->get('field_page_title_bg_image')->view('default');
+    // Page title block image handling (unchanged).
+    if ($variables['plugin_id'] === 'page_title_block') {
+        $route_match = \Drupal::routeMatch();
+        $node = $route_match->getParameter('node');
+        if ($node instanceof NodeInterface &&
+            $node->hasField('field_page_title_bg_image') &&
+            !$node->get('field_page_title_bg_image')->isEmpty()) {
+            $variables['node_image'] = $node->get('field_page_title_bg_image')->view('default');
+        }
     }
-  }
-  $important_links_menu = Menu::load('footer-important-links');
-  $citizen_services_menu = Menu::load('footer-citizen-services');
 
-  $important_links_title = $important_links_menu ? $important_links_menu->label() : '';
-  $citizen_services_title = $citizen_services_menu ? $citizen_services_menu->label() : '';
+    // Footer menu labels
+    $important_links_menu = Menu::load('footer-important-links');
+    $citizen_services_menu = Menu::load('footer-citizen-services');
+    $variables['footer_important_links_label'] = $important_links_menu ? $important_links_menu->label() : '';
+    $variables['footer_citizen_services_label'] = $citizen_services_menu ? $citizen_services_menu->label() : '';
 
-  // Assign to template variables
-  $variables['footer_important_links_label'] = $important_links_title;
-  $variables['footer_citizen_services_label'] = $citizen_services_title;
+    // Target the specific block by plugin id (your existing uuid).
+    if ($variables['plugin_id'] === 'block_content:1f518871-5aa4-422f-a3c7-5f013353e662') {
+        // Find most recently changed published node (accessible to current user).
+        $nids = \Drupal::entityQuery('node')
+            ->accessCheck(TRUE)
+            ->condition('status', 1)
+            ->sort('changed', 'DESC')
+            ->range(0, 1)
+            ->execute();
 
-  if ($variables['plugin_id'] === 'block_content:1f518871-5aa4-422f-a3c7-5f013353e662') {
-    $node = \Drupal\node\Entity\Node::load(1);
-    if ($node) {
-      $variables['last_updated'] = \Drupal::service('date.formatter')->format(
-        $node->getChangedTime(),
-        'custom',
-        'j/n/Y'
-      );
+        $cache_metadata = new CacheableMetadata();
+
+        if (!empty($nids)) {
+            $latest_nid = reset($nids);
+            $latest = \Drupal\node\Entity\Node::load($latest_nid);
+            if ($latest) {
+                // Format date via date.formatter service.
+                /** @var \Drupal\Core\Datetime\DateFormatterInterface $date_formatter */
+                $date_formatter = \Drupal::service('date.formatter');
+                $variables['last_updated'] = $date_formatter->format($latest->getChangedTime(), 'custom', 'j/n/Y');
+
+                // Add cache tags for this specific node and node list so updates invalidate block.
+                // 'node:' . $nid invalidates when that node changes; 'node_list' covers additions/removals.
+                $cache_metadata->addCacheTags(['node:' . $latest->id(), 'node_list']);
+            }
+        }
+        else {
+            // If no published nodes exist, still ensure node_list tag so future published nodes invalidate.
+            $cache_metadata->addCacheTags(['node_list']);
+        }
+
+        // ---- Visitor Counter ----
+        // Note: If your site uses aggressive page caching (Varnish, reverse proxy), this code won't run
+        // on cached responses. For accurate counting in that case use AJAX endpoint or external counter.
+        $state = \Drupal::state();
+        $visits = (int) $state->get('site_visitor_count', 0);
+        $visits++;
+        $state->set('site_visitor_count', $visits);
+        $variables['visitor_count'] = $visits;
+
+        // ---- Current Year ----
+        $variables['current_year'] = date('Y');
+
+        // Make sure this block isn't cached in the page render for anonymous users who should see updated values.
+        // We set max-age 0 (no caching) for the block render array.
+        $cache_metadata->setCacheMaxAge(0);
+
+        // Apply the cacheability metadata to the block render array.
+        // $variables['elements'] is the block render array available in theme preprocess.
+        if (!empty($variables['elements']) && is_array($variables['elements'])) {
+            $cache_metadata->applyTo($variables['elements']);
+        }
+        else {
+            // Fallback: ensure a #cache array is present.
+            if (!isset($variables['elements']['#cache'])) {
+                $variables['elements']['#cache'] = [];
+            }
+            $variables['elements']['#cache']['max-age'] = 0;
+            $variables['elements']['#cache']['tags'][] = 'node_list';
+        }
     }
-      // ---- Visitor Counter ----
-      $state = \Drupal::state();
-      $visits = (int) $state->get('site_visitor_count', 0);
-      $visits++;
-      $state->set('site_visitor_count', $visits);
-  
-      $variables['visitor_count'] = $visits;
-      // ---- Current Year ----
-      $variables['current_year'] = date('Y');
-  
-  }
 }
 
 /**

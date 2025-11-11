@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Municipal Corporation Yamunanagar-Jagadhri</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        /* Header styles */
+        .top-header {
+            background: linear-gradient(90deg, #ff8c00 0%, #dc3545 100%);
+            padding: 4px;
+        }
+        
+        .top-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .welcome-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e1f5fe;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .welcome-text img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .search-container {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 8px 12px 8px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+        }
+        
+        .text-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .text-size {
+            color: #e1f5fe;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .language-selector {
+            background-color: #65558f;
+            border-radius: 5px;
+            padding: 4px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            padding: 4px 8px;
+            font-size: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .lang-btn.active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        .lang-btn:not(.active) {
+            background-color: transparent;
+            color: #ffffff;
+        }
+        
+        /* Main header */
+        .main-header {
+            background-color: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .main-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .logo-section img {
+            width: 60px;
+            height: 70px;
+        }
+        
+        .logo-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 4px;
+        }
+        
+        .logo-text h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #000000;
+        }
+        
+        /* Navigation */
+        .nav-menu {
+            display: none;
+            gap: 24px;
+        }
+        
+        .nav-item {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #000000;
+            text-decoration: none;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            color: #dc3545;
+        }
+        
+        .nav-item.active {
+            color: #dc3545;
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #dc3545;
+        }
+        
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* News ticker */
+        .news-ticker {
+            background-color: #dc3545;
+            padding: 8px 0;
+            overflow: hidden;
+        }
+        
+        .ticker-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .ticker-label {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: 700;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ticker-text {
+            color: #ffffff;
+            font-size: 12px;
+            white-space: nowrap;
+            animation: scroll-left 30s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(270deg, #914725 0%, #0056d0 100%);
+            padding: 32px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .digital-badge {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 32px;
+            border: 1px solid #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .hero-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        
+        .hero-description {
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            color: #ffffff;
+            padding: 12px 24px;
+            border: 2px solid #f77a40;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #f77a40;
+            padding: 12px 24px;
+            border: 2px solid #f77a40;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f77a40;
+            color: #ffffff;
+        }
+        
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        /* Welcome section */
+        .welcome-section {
+            padding: 60px 0;
+            margin-top: -80px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .welcome-content {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-image {
+            width: 40%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .welcome-text-content {
+            flex: 1;
+            padding: 32px;
+        }
+        
+        .welcome-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .welcome-description {
+            color: #000000;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        /* Officials carousel */
+        .officials-section {
+            padding: 40px 0;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .official-card {
+            min-width: 300px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-bottom: 4px solid #f77a40;
+        }
+        
+        .official-card.featured {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            color: #ffffff;
+        }
+        
+        .official-card.featured .official-name,
+        .official-card.featured .official-title,
+        .official-card.featured .official-bio {
+            color: #ffffff;
+        }
+        
+        .official-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            object-fit: cover;
+            margin: 0 auto 16px;
+        }
+        
+        .official-name {
+            font-size: 20px;
+            font-weight: 500;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+        
+        .official-title {
+            font-size: 10px;
+            color: #000000;
+            margin-bottom: 16px;
+        }
+        
+        .official-bio {
+            font-size: 12px;
+            color: #000000;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f77a40;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .official-card.featured .read-more-btn {
+            color: #ffffff;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .carousel-nav.prev {
+            left: -20px;
+        }
+        
+        .carousel-nav.next {
+            right: -20px;
+        }
+        
+        /* Services section */
+        .services-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .section-header {
+            text-align: left;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+        
+        .section-subtitle {
+            color: #000000;
+            font-size: 14px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px 24px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card.featured {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 100%);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .service-icon img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .service-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 12px;
+        }
+        
+        .service-description {
+            color: #000000;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f77a40;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 24px;
+            border: 2px solid #f77a40;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-btn:hover {
+            background-color: #f77a40;
+            color: #ffffff;
+        }
+        
+        .service-btn.primary {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            color: #ffffff;
+            border-color: #f77a40;
+        }
+        
+        /* Latest information section */
+        .info-section {
+            background-image: url('../assets/images/img_.png');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .info-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .info-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .info-subtitle {
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        
+        .info-cards {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+        }
+        
+        .info-card {
+            min-width: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            color: #ffffff;
+        }
+        
+        .info-card.orange {
+            background: linear-gradient(270deg, #ff8c01 0%, #995400 100%);
+        }
+        
+        .info-card.blue {
+            background: linear-gradient(270deg, #0056d0 0%, #002b6a 100%);
+            border: 1px solid #ffffff;
+        }
+        
+        .info-card.red {
+            background: linear-gradient(270deg, #f80000 0%, #920000 100%);
+        }
+        
+        .info-card.green {
+            background: linear-gradient(180deg, #07dea0 0%, #047857 100%);
+        }
+        
+        .info-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .info-card-content {
+            padding: 16px;
+        }
+        
+        .info-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .info-card-date {
+            font-size: 14px;
+        }
+        
+        /* Dashboard section */
+        .dashboard-section {
+            background-color: rgba(224, 242, 255, 0.75);
+            padding: 80px 0;
+            margin-top: -100px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .dashboard-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .dashboard-card.blue {
+            border-top: 4px solid #0056d0;
+        }
+        
+        .dashboard-card.red {
+            border-top: 4px solid #ff3614;
+        }
+        
+        .dashboard-card.green {
+            border-top: 4px solid #047857;
+        }
+        
+        .dashboard-header {
+            background-color: #f9fafb;
+            padding: 12px 16px;
+            border-bottom: 1px solid #cfcfcf;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dashboard-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .dashboard-badge {
+            background-color: #0056d0;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .dashboard-badge.red {
+            background-color: #ff3614;
+        }
+        
+        .dashboard-badge.green {
+            background-color: #047857;
+        }
+        
+        .dashboard-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0056d0;
+        }
+        
+        .stat-number.red {
+            color: #ff3614;
+        }
+        
+        .stat-number.green {
+            color: #047857;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #000000;
+        }
+        
+        .dashboard-content {
+            padding: 16px;
+        }
+        
+        .notification-item {
+            padding: 8px 4px;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .notification-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        
+        .notification-dot.blue {
+            background-color: #0056d0;
+        }
+        
+        .notification-dot.red {
+            background-color: #f80000;
+        }
+        
+        .notification-dot.green {
+            background-color: #047857;
+        }
+        
+        .notification-text {
+            flex: 1;
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .notification-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .priority-badge {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .priority-badge.high {
+            background-color: rgba(220, 38, 38, 0.4);
+            color: #f80000;
+        }
+        
+        .priority-badge.medium {
+            background-color: rgba(217, 119, 14, 0.4);
+            color: #d9770e;
+        }
+        
+        .priority-badge.service {
+            background-color: rgba(4, 120, 87, 0.4);
+            color: #047857;
+        }
+        
+        .priority-badge.active {
+            background-color: rgba(217, 119, 14, 0.4);
+            color: #d9770e;
+        }
+        
+        .view-more-btn {
+            background-color: #0056d0;
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .view-more-btn:hover {
+            background-color: #004494;
+        }
+        
+        .view-more-btn.red {
+            background-color: #ff3614;
+        }
+        
+        .view-more-btn.red:hover {
+            background-color: #cc2a10;
+        }
+        
+        .view-more-btn.green {
+            background-color: #047857;
+        }
+        
+        .view-more-btn.green:hover {
+            background-color: #036146;
+        }
+        
+        /* Emergency section */
+        .emergency-section {
+            background: linear-gradient(0deg, #0c4cb1 0%, #0d47a1 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emergency-bg-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(160, 153, 153, 0.15);
+        }
+        
+        .emergency-bg-circle.left {
+            top: 20px;
+            left: 20px;
+        }
+        
+        .emergency-bg-circle.right {
+            bottom: 20px;
+            right: 20px;
+            width: 180px;
+            height: 180px;
+            background-color: rgba(128, 128, 128, 0.15);
+        }
+        
+        .emergency-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .emergency-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .emergency-subtitle {
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .emergency-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #0c4db2;
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .emergency-icon {
+            width: 32px;
+            height: 44px;
+            margin: 0 auto 16px;
+        }
+        
+        .emergency-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fbc02d;
+            margin-bottom: 16px;
+        }
+        
+        .emergency-service {
+            font-size: 14px;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        
+        .emergency-description {
+            font-size: 12px;
+            color: #ffffff;
+        }
+        
+        .emergency-alert {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid #fbc02d;
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .emergency-alert-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .emergency-alert-text {
+            color: #ffffff;
+        }
+        
+        .emergency-alert-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-right: 16px;
+        }
+        
+        /* Events section */
+        .events-section {
+            background-color: #ffffff;
+            padding: 60px 0;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .event-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #f77a40;
+        }
+        
+        .event-card.featured {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            color: #ffffff;
+        }
+        
+        .event-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .event-date {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .event-description {
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .event-images {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+        }
+        
+        .event-image {
+            width: 120px;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        /* Government links section */
+        .gov-links-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .gov-links-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .gov-links-subtitle {
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        
+        .gov-links-carousel {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .gov-links-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gov-link-card {
+            min-width: 200px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-bottom: 4px solid;
+            border-image: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+            border-image-slice: 1;
+        }
+        
+        .gov-link-card img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .indicator {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            background-color: #d9d9d9;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: linear-gradient(270deg, #ff8c00 0%, #ff3614 100%);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 60px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #f77a40;
+            margin-bottom: 16px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: #fbfbfb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #f77a40;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .footer-logo-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        
+        .footer-logo-text h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        
+        .footer-description {
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+        
+        .social-links img {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-item img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .contact-item span {
+            font-size: 12px;
+            color: #fbfbfb;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #ffffff;
+            padding-top: 24px;
+            text-align: center;
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .footer-version {
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #ff8c00;
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive media queries */
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .emergency-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 32px;
+            }
+            
+            .nav-menu {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+            
+            .hero-content {
+                gap: 48px;
+            }
+            
+            .hero-image {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .welcome-content {
+                gap: 48px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .emergency-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 48px;
+            }
+            
+            .hero-title {
+                font-size: 64px;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .welcome-title {
+                font-size: 40px;
+            }
+            
+            .emergency-title {
+                font-size: 40px;
+            }
+            
+            .emergency-number {
+                font-size: 40px;
+            }
+            
+            .info-title {
+                font-size: 40px;
+            }
+            
+            .gov-links-title {
+                font-size: 40px;
+            }
+            
+            .carousel-track {
+                gap: 24px;
+            }
+            
+            .official-card {
+                min-width: 354px;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .emergency-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1536px) {
+            .hero-content {
+                gap: 64px;
+            }
+            
+            .hero-image {
+                width: 500px;
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="welcome-text">
+                    <img src="../assets/images/img_material_symbols_home_rounded.svg" alt="Home" />
+                    <span>Welcome to Municipal Corporation Yamunanagar-Jagadhri</span>
+                </div>
+                <div class="header-controls">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Website Search" />
+                        <img src="../assets/images/img_search.svg" alt="Search" class="search-icon" />
+                    </div>
+                    <div class="text-controls">
+                        <span class="text-size">A</span>
+                        <img src="../assets/images/img_line_md_arrow_up.svg" alt="Increase" style="width: 12px; height: 12px;" />
+                        <span class="text-size">A</span>
+                        <img src="../assets/images/img_line_md_arrow_up_light_blue_50.svg" alt="Decrease" style="width: 12px; height: 12px;" />
+                        <img src="../assets/images/img_fluent_speaker_2_16_regular.svg" alt="Audio" style="width: 16px; height: 16px;" />
+                        <img src="../assets/images/img_ix_light_dark.svg" alt="Theme" style="width: 16px; height: 16px;" />
+                    </div>
+                    <div class="language-selector">
+                        <button class="lang-btn active">English</button>
+                        <button class="lang-btn">Hindi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="main-header-content">
+                <div class="logo-section">
+                    <img src="../assets/images/img_logo_1.png" alt="Municipal Corporation Logo" />
+                    <div class="logo-text">
+                        <h1>Municipal Corporation</h1>
+                        <h2>Yamunanagar-Jagadhri</h2>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-item active">Home</a>
+                    <a href="#" class="nav-item">About Us</a>
+                    <a href="#" class="nav-item">Information</a>
+                    <a href="#" class="nav-item">Services</a>
+                    <a href="#" class="nav-item">Contact Us</a>
+                    <a href="#" class="nav-item">Download</a>
+                    <a href="#" class="nav-item">Tenders</a>
+                </nav>
+                <button class="hamburger">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- News Ticker -->
+    <div class="news-ticker">
+        <div class="container">
+            <div class="ticker-content">
+                <div class="ticker-label">
+                    <img src="../assets/images/img_heroicons_speak.svg" alt="News" style="width: 16px; height: 16px;" />
+                    <span>Latest News</span>
+                    <img src="../assets/images/img_gridicons_play.svg" alt="Play" style="width: 24px; height: 24px;" />
+                </div>
+                <div class="ticker-text">
+                    Door to Door Garbage Collection Toll free- 18002085654 (Publish Date : 23-12-2022)
+                    <img src="../assets/images/img_material_symbols_star_outline.svg" alt="Star" style="width: 24px; height: 24px; margin-left: 10px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="digital-badge">
+                        <img src="../assets/images/img_flowbiteawardsolid.svg" alt="Award" style="width: 32px; height: 32px;" />
+                        Digital India Certified
+                    </div>
+                    <h1 class="hero-title">Support us to Become strong economy</h1>
+                    <p class="hero-description">
+                        We are committed to building a clean, green, and progressive Manesar. At the Municipal Corporation Manesar, we work to provide efficient public services, enhance infrastructure, and ensure the overall well-being of our citizens.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn-primary">
+                            <img src="../assets/images/img_icons.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            Explore Services
+                        </a>
+                        <a href="#" class="btn-secondary">
+                            <img src="../assets/images/img_icons_deep_orange_400.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            Watch Video
+                        </a>
+                    </div>
+                </div>
+                <img src="../assets/images/img_image_9.png" alt="Hero Image" class="hero-image" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="welcome-content">
+                <img src="../assets/images/img_image_2.png" alt="Yamuna Nagar" class="welcome-image" />
+                <div class="welcome-text-content">
+                    <h2 class="welcome-title">
+                        <img src="../assets/images/img_mynaui_building_solid.svg" alt="Building" style="width: 46px; height: 46px;" />
+                        Welcome to Yamuna Nagar
+                    </h2>
+                    <p class="welcome-description">
+                        Nestled along the banks of the Yamuna River in the northern state of Haryana, Yamuna Nagar is a vibrant city known for its rich cultural heritage, scenic beauty, and industrial excellence. From ancient temples to lush green forests and modern infrastructure, the city offers a perfect blend of tradition and development.
+                    </p>
+                    <a href="#" class="btn-secondary">
+                        <img src="../assets/images/img_icons_deep_orange_400_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Officials Carousel -->
+    <section class="officials-section">
+        <div class="container">
+            <div class="carousel-container">
+                <button class="carousel-nav prev">‹</button>
+                <div class="carousel-track" id="officialsTrack">
+                    <div class="official-card">
+                        <img src="../assets/images/img_ellipse_7.png" alt="Suman Behmani" class="official-avatar" />
+                        <h3 class="official-name">Suman Behmani</h3>
+                        <p class="official-title">Mayor of Yamunanagar–Jagadhri Municipal Corporation</p>
+                        <p class="official-bio">
+                            Suman Behmani holds an MPhil along with MEd, BEd, and MA degrees, making her one of the most qualified mayoral candidates in Haryana
+                        </p>
+                        <a href="#" class="read-more-btn">
+                            <img src="../assets/images/img_icons_deep_orange_400_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            Read More
+                        </a>
+                    </div>
+                    <div class="official-card">
+                        <img src="../assets/images/img_ellipse_7_124x128.png" alt="Ayush Sinha" class="official-avatar" />
+                        <h3 class="official-name">Ayush Sinha</h3>
+                        <p class="official-title">Commissioner of Yamunanagar</p>
+                        <p class="official-bio">
+                            Ayush Sinha serves as the Municipal Commissioner of Yamuna Nagar–Jagadhri Municipal Corporation, overseeing civic services in the city.
+                        </p>
+                        <a href="#" class="read-more-btn">
+                            <img src="../assets/images/img_icons_deep_orange_400_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            Read More
+                        </a>
+                    </div>
+                    <div class="official-card featured">
+                        <img src="../assets/images/img_ellipse_7_1.png" alt="Suman Behmani" class="official-avatar" />
+                        <h3 class="official-name">Suman Behmani</h3>
+                        <p class="official-title">Mayor of Yamunanagar–Jagadhri Municipal Corporation</p>
+                        <p class="official-bio">
+                            Suman Behmani holds an MPhil along with MEd, BEd, and MA degrees, making her one of the most qualified mayoral candidates in Haryana
+                        </p>
+                        <a href="#" class="read-more-btn">
+                            <img src="../assets/images/img_icons_white_a700.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                <button class="carousel-nav next">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Online Services</h2>
+                    <p class="section-subtitle">Residents will able to avail basic services through online Portal.</p>
+                </div>
+                <a href="#" class="btn-primary">
+                    <img src="../assets/images/img_icons_white_a700_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                    View all services
+                </a>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/img_services_icons.svg" alt="Public Grievance" />
+                    </div>
+                    <h3 class="service-title">Public Grievance</h3>
+                    <p class="service-description">
+                        Have a complaint or suggestion to make? Our digital grievance system ensures quick resolution and transparent tracking.
+                    </p>
+                    <a href="#" class="service-btn">
+                        <img src="../assets/images/img_icons_24x24.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        File Complaint
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/img_services_icons_white_a700.svg" alt="Birth/Death Registration" />
+                    </div>
+                    <h3 class="service-title">Birth/Death Registration</h3>
+                    <p class="service-description">
+                        Click here to check Birth/Death Registration Status and download official certificates with digital verification.
+                    </p>
+                    <a href="#" class="service-btn">
+                        <img src="../assets/images/img_icons_1.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Get Certificate
+                    </a>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-icon">
+                        <img src="../assets/images/img_services_icons_white_a700_50x44.svg" alt="Trade License" />
+                    </div>
+                    <h3 class="service-title">Trade License</h3>
+                    <p class="service-description">
+                        Click here to apply online to get a Trade License with streamlined process and digital approval workflow.
+                    </p>
+                    <a href="#" class="service-btn primary">
+                        <img src="../assets/images/img_icons.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Apply Online
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/img_services_icons.svg" alt="Property Tax" />
+                    </div>
+                    <h3 class="service-title">Property Tax</h3>
+                    <p class="service-description">
+                        Click here to find out Property details and Pay Property Tax Online securely with multiple payment options.
+                    </p>
+                    <a href="#" class="service-btn">
+                        <img src="../assets/images/img_icons_2.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Pay Now
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/img_services_icons_50x44.svg" alt="Marriage Registration" />
+                    </div>
+                    <h3 class="service-title">Marriage Registration</h3>
+                    <p class="service-description">
+                        Click here to check Marriage Registration Status and download certificates instantly with our digital platform.
+                    </p>
+                    <a href="#" class="service-btn">
+                        <img src="../assets/images/img_icons_3.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Check Status
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/img_services_icons_1.svg" alt="RTI Application" />
+                    </div>
+                    <h3 class="service-title">RTI Application</h3>
+                    <p class="service-description">
+                        Click here to ask information from under RTI Act 2005. Transparent governance through easy information access.
+                    </p>
+                    <a href="#" class="service-btn">
+                        <img src="../assets/images/img_icons_4.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                        Apply RTi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Information Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-content">
+                <h2 class="info-title">Explore Latest Information</h2>
+                <p class="info-subtitle">Stay updated with the latest news</p>
+                <div class="info-cards">
+                    <div class="info-card orange">
+                        <img src="../assets/images/img_image_3.png" alt="Azadi Ka Amrit Mahotsav" />
+                        <div class="info-card-content">
+                            <h3 class="info-card-title">Azadi Ka Amrit Mahotsav</h3>
+                            <p class="info-card-date">Date : 18 Jan 2024</p>
+                        </div>
+                    </div>
+                    <div class="info-card blue">
+                        <img src="../assets/images/img_image_3.png" alt="Viksit Bharat Sankalp" />
+                        <div class="info-card-content">
+                            <h3 class="info-card-title">Viksit Bharat Sankalp</h3>
+                            <p class="info-card-date">Date : 18 Jan 2024</p>
+                        </div>
+                    </div>
+                    <div class="info-card red">
+                        <img src="../assets/images/img_image_3_218x288.png" alt="Voters Service Portal" />
+                        <div class="info-card-content">
+                            <h3 class="info-card-title">Voters Service Portal</h3>
+                            <p class="info-card-date">Date : 18 Jan 2024</p>
+                        </div>
+                    </div>
+                    <div class="info-card green">
+                        <img src="../assets/images/img_image_3_1.png" alt="Swachh Bharat Abhiyan" />
+                        <div class="info-card-content">
+                            <h3 class="info-card-title">Swachh Bharat Abhiyan</h3>
+                            <p class="info-card-date">Date : 18 Jan 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- What's New Card -->
+                <div class="dashboard-card blue">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">
+                            <img src="../assets/images/img_icon_notifications.svg" alt="Notifications" style="width: 32px; height: 34px;" />
+                            What's New
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="dashboard-badge">5 New</span>
+                            <div style="background-color: #0056d0; border-radius: 4px; padding: 8px;">
+                                <img src="../assets/images/img_vector.svg" alt="Arrow" style="width: 14px; height: 14px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">156</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Updated</div>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="notification-item">
+                            <div class="notification-dot blue"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge high">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-dot blue"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge medium">Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-dot blue"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge high">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more-btn">
+                            <img src="../assets/images/img_icons_5.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            View More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Notifications Card -->
+                <div class="dashboard-card red">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">
+                            <div style="background-color: #ff3614; border-radius: 4px; padding: 8px;">
+                                <img src="../assets/images/img_vector_white_a700.svg" alt="Notifications" style="width: 18px; height: 16px;" />
+                            </div>
+                            Notifications
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="dashboard-badge red">5 Urgent</span>
+                            <div style="background-color: #ff3614; border-radius: 4px; padding: 8px;">
+                                <img src="../assets/images/img_vector.svg" alt="Arrow" style="width: 14px; height: 14px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-item">
+                            <div class="stat-number red">7</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number red">23</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number red">92%</div>
+                            <div class="stat-label">Updated</div>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="notification-item">
+                            <div class="notification-dot red"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge active">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-dot red"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge high">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-dot red"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge high">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more-btn red">
+                            <img src="../assets/images/img_icons_6.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            View More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Citizen Corner Card -->
+                <div class="dashboard-card green">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">
+                            <div style="background-color: #047857; border-radius: 4px; padding: 8px;">
+                                <img src="../assets/images/img_vector_white_a700_14x20.svg" alt="Citizen" style="width: 20px; height: 14px;" />
+                            </div>
+                            Citizen Corner
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="dashboard-badge green">5 New</span>
+                            <div style="background-color: #047857; border-radius: 4px; padding: 8px;">
+                                <img src="../assets/images/img_vector.svg" alt="Arrow" style="width: 14px; height: 14px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-item">
+                            <div class="stat-number green">247</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number green">27</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number green">96%</div>
+                            <div class="stat-label">Updated</div>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="notification-item">
+                            <div class="notification-dot green"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge high">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-dot green"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge high">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-dot green"></div>
+                            <div>
+                                <div class="notification-text">Public Notice Regarding Unauthorised Religious Structures On Municipal Land</div>
+                                <div class="notification-meta">
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <img src="../assets/images/img_pixel_calender_solid.svg" alt="Calendar" style="width: 10px; height: 10px;" />
+                                        <span>18-08-2025</span>
+                                    </div>
+                                    <span class="priority-badge service">Service</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more-btn green">
+                            <img src="../assets/images/img_icons_7.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                            View More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section class="emergency-section">
+        <div class="emergency-bg-circle left"></div>
+        <div class="emergency-bg-circle right"></div>
+        <div class="container">
+            <div class="emergency-content">
+                <h2 class="emergency-title">Emergency Helpline Numbers</h2>
+                <p class="emergency-subtitle">
+                    Round-the-clock emergency services for immediate assistance. Save these numbers for quick access during emergencies.
+                </p>
+                <div class="emergency-grid">
+                    <div class="emergency-card">
+                        <img src="../assets/images/img_vector_yellow_700.svg" alt="Child Helpline" class="emergency-icon" />
+                        <div class="emergency-number">1098</div>
+                        <div class="emergency-service">Child Helpline Number</div>
+                        <div class="emergency-description">24/7 Child Protection Services</div>
+                    </div>
+                    <div class="emergency-card">
+                        <img src="../assets/images/img_helpline_numbers.svg" alt="Women Helpline" class="emergency-icon" />
+                        <div class="emergency-number">1098</div>
+                        <div class="emergency-service">Women Helpline Number</div>
+                        <div class="emergency-description">Women Safety & Support</div>
+                    </div>
+                    <div class="emergency-card">
+                        <img src="../assets/images/img_helpline_numbers_yellow_700.svg" alt="Anti-Corruption" class="emergency-icon" />
+                        <div class="emergency-number">1064</div>
+                        <div class="emergency-service">Anti-Corruption Helpline</div>
+                        <div class="emergency-description">Report Corruption Issuesh</div>
+                    </div>
+                    <div class="emergency-card">
+                        <img src="../assets/images/img_helpline_numbers_yellow_700_44x32.svg" alt="Hospital" class="emergency-icon" />
+                        <div class="emergency-number">0172-2567228</div>
+                        <div class="emergency-service">City Hospital Helpline</div>
+                        <div class="emergency-description">Medical Emergency Services</div>
+                    </div>
+                    <div class="emergency-card">
+                        <img src="../assets/images/img_helpline_numbers_44x32.svg" alt="Voter Helpline" class="emergency-icon" />
+                        <div class="emergency-number">1098</div>
+                        <div class="emergency-service">Voter Helpline Number</div>
+                        <div class="emergency-description">Election Related Queries</div>
+                    </div>
+                    <div class="emergency-card">
+                        <img src="../assets/images/img_helpline_numbers_1.svg" alt="Ambulance" class="emergency-icon" />
+                        <div class="emergency-number">102</div>
+                        <div class="emergency-service">Ambulance Service</div>
+                        <div class="emergency-description">Medical Emergency Transport</div>
+                    </div>
+                </div>
+                <div class="emergency-alert">
+                    <img src="../assets/images/img_mdi_alert.svg" alt="Alert" class="emergency-alert-icon" />
+                    <div class="emergency-alert-text">
+                        <span class="emergency-alert-title">Important :</span>
+                        In case of life-threatening emergencies, dial 112 for immediate assistance
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Latest Events</h2>
+                    <p class="section-subtitle">
+                        Stay updated with recent programs, initiatives, and public gatherings organized by the Municipal Corporation.
+                    </p>
+                </div>
+                <a href="#" class="btn-primary">
+                    <img src="../assets/images/img_icons_white_a700.svg" alt="Icon" style="width: 24px; height: 24px;" />
+                    All Events
+                </a>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <h3 class="event-title">Independence Day Celebration</h3>
+                    <p class="event-date">15th August 2025</p>
+                    <p class="event-description">
+                        A colorful celebration of patriotism, performances, and cultural pride.
+                    </p>
+                    <div class="event-images">
+                        <img src="../assets/images/img_frame_427319338.png" alt="Event 1" class="event-image" />
+                        <img src="../assets/images/img_frame_427319339.png" alt="Event 2" class="event-image" />
+                        <img src="../assets/images/img_frame_427319340.png" alt="Event 3" class="event-image" />
+                    </div>
+                    <div class="event-images">
+                        <img src="../assets/images/img_frame_427319338_126x160.png" alt="Event 4" class="event-image" />
+                        <img src="../assets/images/img_frame_427319339_126x160.png" alt="Event 5" class="event-image" />
+                        <img src="../assets/images/img_frame_427319340_126x160.png" alt="Event 6" class="event-image" />
+                    </div>
+                </div>
+                <div class="event-card featured">
+                    <h3 class="event-title">Smart City Expo 2025</h3>
+                    <p class="event-date">5th July 2025</p>
+                    <p class="event-description">
+                        Innovative exhibits and keynote sessions on building sustainable cities.
+                    </p>
+                    <div class="event-images">
+                        <img src="../assets/images/img_frame_427319338.png" alt="Event 1" class="event-image" />
+                        <img src="../assets/images/img_frame_427319339.png" alt="Event 2" class="event-image" />
+                        <img src="../assets/images/img_frame_427319340.png" alt="Event 3" class="event-image" />
+                    </div>
+                    <div class="event-images">
+                        <img src="../assets/images/img_frame_427319338_126x160.png" alt="Event 4" class="event-image" />
+                        <img src="../assets/images/img_frame_427319339_126x160.png" alt="Event 5" class="event-image" />
+                        <img src="../assets/images/img_frame_427319340_126x160.png" alt="Event 6" class="event-image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Links Section -->
+    <section class="gov-links-section">
+        <div class="container">
+            <h2 class="gov-links-title">Useful Government Links</h2>
+            <p class="gov-links-subtitle">
+                Quick access to important government websites and services through verified external links.
+            </p>
+            <div class="gov-links-carousel">
+                <button class="carousel-nav prev">‹</button>
+                <div class="gov-links-track" id="govLinksTrack">
+                    <div class="gov-link-card">
+                        <img src="../assets/images/img_image_15.png" alt="Government Link 1" />
+                    </div>
+                    <div class="gov-link-card">
+                        <img src="../assets/images/img_image_11.png" alt="Government Link 2" />
+                    </div>
+                    <div class="gov-link-card">
+                        <img src="../assets/images/img_image_12.png" alt="Government Link 3" />
+                    </div>
+                    <div class="gov-link-card">
+                        <img src="../assets/images/img_image_13.png" alt="Government Link 4" />
+                    </div>
+                </div>
+                <button class="carousel-nav next">›</button>
+            </div>
+            <div class="carousel-indicators">
+                <div class="indicator"></div>
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../assets/images/img_logo_2.png" alt="Municipal Corporation Logo" />
+                        <div class="footer-logo-text">
+                            <h3>Municipal Corporation</h3>
+                            <h4>Yamunanagar-Jagadhri</h4>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        We are committed to building a clean, green, and progressive Municipal Corporation. We work to provide efficient public services, enhance infrastructure, and ensure the overall well-being of our citizens through digital innovation.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><img src="../assets/images/img_ic_baseline_facebook.svg" alt="Facebook" /></a>
+                        <a href="#"><img src="../assets/images/img_mdi_instagram.svg" alt="Instagram" /></a>
+                        <a href="#"><img src="../assets/images/img_mdi_youtube.svg" alt="YouTube" /></a>
+                        <a href="#"><img src="../assets/images/img_mdi_twitter.svg" alt="Twitter" /></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Tenders</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Citizen Services</h3>
+                    <ul>
+                        <li><a href="#">Birth/Death Certificate</a></li>
+                        <li><a href="#">Property Tax</a></li>
+                        <li><a href="#">Marriage Registration</a></li>
+                        <li><a href="#">Water Connection</a></li>
+                        <li><a href="#">Public Grievance</a></li>
+                        <li><a href="#">RTI Application</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <img src="../assets/images/img_mdi_location.svg" alt="Location" />
+                        <span>Municipal Corporation Office Yamuna Nagar & Jagadhri Haryana - 135001, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="../assets/images/img_line_md_phone.svg" alt="Phone" />
+                        <span>+91- 1722567228</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="../assets/images/img_material_symbols_mail.svg" alt="Email" />
+                        <span>info@mcyamunanagar.gov.in</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>© 2024 Municipal Corporation Yamuna Nagar & Jagadhri. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+                <p class="footer-version">
+                    Last updated: 29/7/2025 | Version 2.0.1 | <a href="#" style="text-decoration: underline;">Report Issue</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top">
+        <img src="../assets/images/img_mdi_arrow_up.svg" alt="Back to Top" style="width: 24px; height: 24px;" />
+    </a>
+
+</body>
+</html>

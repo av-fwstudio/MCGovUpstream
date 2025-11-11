@@ -1,52 +1,44 @@
 <section class="hero-section">
-	<div class="container">
-		<div class="hero-content">
-			{{content.field_title|raw}}
-			{% for key, item in content.field_carousel_items %}
-				{% if key|first != '#' %}
-					{% set slide = item['#paragraph'] %}
-					<div class="hero-text">
-						<div class="digital-badge">
-							<img src="{{ directory }}/assets/images/img_flowbiteawardsolid.svg" alt="Award" style="width: 32px; height: 32px;"/>
-							Digital India Certified
-						</div>
-						<h1 class="hero-title">{{ slide.field_title.value }}</h1>
+    <div class="container">
+        <div class="hero-content">
+            {{content.field_title|raw}}
+            {% for key, item in content.field_carousel_items %}
+                {% if key|first != '#' %}
+                    {% set slide = item['#paragraph'] %}
+                    <div class="hero-slide">
+                        <div class="slide-wrapper">
+                            <div class="hero-text">
+                                <div class="digital-badge">
+                                    <img src="{{ directory }}/assets/images/img_flowbiteawardsolid.svg" alt="Award" style="width: 32px; height: 32px;"/>
+                                    Digital India Certified
+                                </div>
+                                <h1 class="hero-title">{{ slide.field_title.value }}</h1>
 
-						{{ slide.field_description.value|raw }}
-						{% if slide.field_cta is not empty %}
-							<div class="hero-buttons">
-								{% for cta in slide.field_cta %}
-									{% set url = cta.uri %}
-									{% set title = cta.title %}
-									{% set icon_class = loop.index == 1 ? 'btn-primary' : 'btn-secondary' %}
-									{% set icon_path = loop.index == 1 
-        ? directory ~ '/assets/images/img_icons.svg' 
-        : directory ~ '/assets/images/img_icons_deep_orange_400.svg' %}
-									<a href="{{ url|replace({'internal:': ''}) }}" class="{{ icon_class }}">
-										<img src="{{ icon_path }}" alt="Icon" style="width: 24px; height: 24px;"/>
-										{{ title }}
-									</a>
-								{% endfor %}
-							</div>
-						{% endif %}
-
-						{# <div class="hero-buttons">
-						                        <a href="#" class="btn-primary">
-						                            <img src="{{ directory }}/assets/images/img_icons.svg" alt="Icon" style="width: 24px; height: 24px;" />
-						                            Explore Services
-						                        </a>
-						                        <a href="#" class="btn-secondary">
-						                            <img src="{{ directory }}/assets/images/img_icons_deep_orange_400.svg" alt="Icon" style="width: 24px; height: 24px;" />
-						                            Watch Video
-						                        </a>
-						                    </div> #}
-					</div>
-					{% if slide.field_carousel_image.entity.field_media_image.entity.uri.value %}
-						<img src="{{ file_url(slide.field_carousel_image.entity.field_media_image.entity.uri.value) }}" alt="{{ slide.field_carousel_image.entity.field_media_image.alt|default('') }} class=" hero-image"">
-					{% endif %}
-					{# <img src="../assets/images/img_image_9.png" alt="Hero Image" class="hero-image" /> #}
-				{% endif %}
-			{% endfor %}
-		</div>
-	</div>
+                                {{ slide.field_description.value|raw }}
+                                {% if slide.field_cta is not empty %}
+                                    <div class="hero-buttons">
+                                        {% for cta in slide.field_cta %}
+                                            {% set url = cta.uri %}
+                                            {% set title = cta.title %}
+                                            {% set icon_class = loop.index == 1 ? 'btn-primary' : 'btn-secondary' %}
+                                            {% set icon_path = loop.index == 1
+                                                ? directory ~ '/assets/images/img_icons.svg'
+                                                : directory ~ '/assets/images/img_icons_deep_orange_400.svg' %}
+                                            <a href="{{ url|replace({'internal:': ''}) }}" class="{{ icon_class }}">
+                                                <img src="{{ icon_path }}" alt="Icon" style="width: 24px; height: 24px;"/>
+                                                {{ title }}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% if slide.field_carousel_image.entity.field_media_image.entity.uri.value %}
+                                <img src="{{ file_url(slide.field_carousel_image.entity.field_media_image.entity.uri.value) }}" alt="{{ slide.field_carousel_image.entity.field_media_image.alt|default('') }} class=" hero-image"">
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </section>

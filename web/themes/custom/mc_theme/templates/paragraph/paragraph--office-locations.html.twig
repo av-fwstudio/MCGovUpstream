@@ -98,9 +98,18 @@
                                                 {% if type_field %}
                                                     {% for type_entity in type_field %}
                                                         {% if type_entity.entity %}
+                                                            {% set value = type_entity.entity.field_value.value %}
                                                             <div class="contact-type">
                                                                 <div class="contact-title">{{ type_entity.entity.field_title.value }}</div>
-                                                                <div class="contact-value">{{ type_entity.entity.field_value.value }}</div>
+                                                                <div class="contact-value">
+                                                                    {% if value matches '/@/' %}
+                                                                        <a href="mailto:{{ value }}">{{ value }}</a>
+                                                                    {% elseif value|replace({' ': '', '+': '', '-': '', '(': '', ')': ''}) matches '/^[0-9]+$/' %}
+                                                                        <a href="tel:{{ value|replace({' ': ''}) }}">{{ value }}</a>
+                                                                    {% else %}
+                                                                        {{ value }}
+                                                                    {% endif %}
+                                                                </div>
                                                             </div>
                                                         {% endif %}
                                                     {% endfor %}

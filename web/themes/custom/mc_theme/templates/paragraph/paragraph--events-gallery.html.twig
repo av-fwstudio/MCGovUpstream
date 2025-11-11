@@ -1,54 +1,53 @@
 <section class="events-section">
-	<div class="container">
-		<div class="section-header">
-			<div>
-				<h2 class="section-title">
-					{{ content.field_title | raw }}</h2>
-				<div class="section-subtitle">
-					{{ content.field_sub_title | raw }}
-				</div>
-			</div>
-			{% if paragraph.field_cta is not empty %}
-				{% set link = paragraph.field_cta %}
-				<a href="{{ link.uri|replace({'internal:': ''}) }}" class="btn-primary">
-					<img src="{{ directory }}/assets/images/img_icons_white_a700.svg" alt="Icon" style="width: 24px; height: 24px;"/>
-					{{ link.title }}
-				</a>
+    {{ attach_library('mc_theme/zoom-gallery') }}
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    {{ content.field_title|raw }}</h2>
+                <div class="section-subtitle">
+                    {{ content.field_sub_title|raw }}
+                </div>
+            </div>
+            {% if paragraph.field_cta is not empty %}
+                {% set link = paragraph.field_cta %}
+                <a href="{{ link.uri|replace({'internal:': ''}) }}" class="btn-primary">
+                    <img src="{{ directory }}/assets/images/img_icons_white_a700.svg" alt="Icon" style="width: 24px; height: 24px;"/>
+                    {{ link.title }}
+                </a>
             {% endif %}
-			</div>
-			{% if paragraph.field_event_gallery is not empty %}
-				<div class="events-grid">
-					{% for item in paragraph.field_event_gallery %}
-						{% set node = item.entity %}
-						{% if node %}
-							<div class="event-card">
-								<h3 class="event-title"><a href="{{ path('entity.node.canonical', {'node': node.id}) }}">{{ node.label|raw }}</a></h3>
-								<p class="event-date"></p>
-								<div class="event-description">{{ node.body.value|striptags }}</div>
+        </div>
+        {% if paragraph.field_event_gallery is not empty %}
+            <div class="events-grid">
+                {% for item in paragraph.field_event_gallery %}
+                    {% set node = item.entity %}
+                    {% if node %}
+                        {% set images = node.field_image_gallery %}
+                        {% if images|length >= 1 %}
+                        <div class="event-card">
+                            <h3 class="event-title">
+                                <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+                                    {{ node.label|raw }}
+                                </a>
+                            </h3>
+                            <div class="event-description">{{ node.body.value|raw }}</div>
+                                <div class="event-images">
+                                    {% for i in 0..5 %}
+                                        {% if images[i] is defined %}
+                                            <a href="{{ file_url(images[i].entity.field_media_image.entity.uri.value) }}" class="gallery-popup">
+                                                <img src="{{ file_url(images[i].entity.field_media_image.entity.uri.value) }}"
+                                                     alt="{{ images[i].entity.field_media_image.alt|default('Event image') }}"
+                                                     class="event-image"/>
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                        </div>
+                            {% endif %}
+                    {% endif %}
+                {% endfor %}
 
-								{% set images = node.field_image_gallery %}
-								{% if images|length >= 1 %}
-									<div class="event-images">
-										{% for i in 0..2 %}
-											{% if images[i] is defined %}
-												<img src="{{file_url(images[i].entity.field_media_image.entity.uri.value) }}" alt="{{ images[i].entity.field_media_image.alt|default('Event image') }}" class="event-image"/>
-											{% endif %}
-										{% endfor %}
-									</div>
-
-									<div class="event-images">
-										{% for i in (images|length - 3)..(images|length - 1) %}
-											{% if images[i] is defined %}
-												<img src="{{ file_url(images[i].entity.field_media_image.entity.uri.value) }}" alt="{{ images[i].entity.field_media_image.alt|default('Event image') }}" class="event-image"/>
-											{% endif %}
-										{% endfor %}
-									</div>
-								{% endif %}
-							</div>
-						{% endif %}
-					{% endfor %}
-
-				</div>
-			{% endif %}
-		</div>
-	</section>
+            </div>
+        {% endif %}
+    </div>
+</section>

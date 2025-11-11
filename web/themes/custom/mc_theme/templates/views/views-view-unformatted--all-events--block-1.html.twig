@@ -16,37 +16,34 @@
  */
 #}
 {% if title %}
-  <h3>{{ title }}</h3>
+    <h3>{{ title }}</h3>
 {% endif %}
 {% for row in rows %}
-  {%
-    set row_classes = [
-      default_row_class ? 'views-row',
+    {%
+        set row_classes = [
+        default_row_class ? 'views-row',
     ]
-  %}
+    %}
     <div class="event-card">
+        {{ attach_library('mc_theme/zoom-gallery') }}
         {% set raw = row.content['#row'] %}
         <a href="{{ path('entity.node.canonical', {'node': row.content['#row']._entity.id}) }}" class="event-link"><h3 class="event-title">{{ row.content['#row']._entity.title.value }}</h3></a>
         <div class="event-description">{{ row.content['#row']._entity.body.value|raw }}</div>
         {% set node = row.content['#row']._entity %}
         {% set images = node.field_image_gallery|slice(0, 6) %}
-        {% for image in images %}
-            {% set media = image.entity %}
-            {% if media is not empty %}
-                {% set file_entity = media.field_media_image.entity %}
-                {% set uri = file_entity.uri.value %}
-                {% set url = file_url(uri) %}
+        <div class="event-images">
+            {% for image in images %}
+                {% set media = image.entity %}
+                {% if media is not empty %}
+                    {% set file_entity = media.field_media_image.entity %}
+                    {% set uri = file_entity.uri.value %}
+                    {% set url = file_url(uri) %}
 
-                {% if loop.index0 % 3 == 0 %}
-                    <div class="event-images">
+                    <a href="{{ url }}" class="gallery-popup">
+                        <img src="{{ url }}" alt="{{ media.field_media_image.alt }}" />
+                    </a>
                 {% endif %}
-
-                <img src="{{ url }}" alt="{{ media.field_media_image.alt }}" />
-
-                {% if loop.index0 % 3 == 2 or loop.last %}
-                    </div>
-                {% endif %}
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endfor %}

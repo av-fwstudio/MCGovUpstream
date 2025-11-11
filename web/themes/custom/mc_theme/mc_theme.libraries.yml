@@ -11,6 +11,7 @@ global-styling:
     assets/js/slick.js: {}
     assets/js/slick.min.js: {}
     assets/js/slick-directory.js: {}
+    assets/js/hero-slider.js: {}
   dependencies:
     - core/drupal
     - core/jquery

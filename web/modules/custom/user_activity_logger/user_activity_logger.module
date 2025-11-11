@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 
 /**
  * Implements hook_user_login().
@@ -263,4 +264,76 @@ function user_activity_logger_form_alter(&$form, FormStateInterface $form_state,
       throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
     }
   }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function user_activity_logger_token_info() {
+    return [
+        'tokens' => [
+            'mc-theme' => [
+                'current-year' => [
+                    'name' => t('Current year'),
+                    'description' => t('The current year (e.g., 2025).'),
+                ],
+                'visitor-count' => [
+                    'name' => t('Visitor count'),
+                    'description' => t('Total site visitors.'),
+                ],
+                'last-updated' => [
+                    'name' => t('Last updated date of latest published node.'),
+                    'description' => t('Last updated date of the most recently changed published node.'),
+                ],
+            ],
+        ],
+    ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function user_activity_logger_tokens($type, $tokens, array $data = [], array $options = []) {
+    $replacements = [];
+
+    if ($type === 'mc-theme') {
+        foreach ($tokens as $name => $original) {
+            switch ($name) {
+                case 'current-year':
+                    $replacements[$original] = date('Y');
+                    break;
+
+                case 'visitor-count':
+                    $state = \Drupal::state();
+                    $replacements[$original] = (int) $state->get('site_visitor_count', 0);
+                    break;
+
+                case 'last-updated':
+                    $nids = \Drupal::entityQuery('node')
+                        ->accessCheck(TRUE)
+                        ->condition('status', 1)
+                        ->sort('changed', 'DESC')
+                        ->range(0, 1)
+                        ->execute();
+
+                    if (!empty($nids)) {
+                        $latest_nid = reset($nids);
+                        $latest = \Drupal\node\Entity\Node::load($latest_nid);
+                        if ($latest) {
+                            $replacements[$original] = \Drupal::service('date.formatter')
+                                ->format($latest->getChangedTime(), 'custom', 'j/n/Y');
+                        }
+                        else {
+                            $replacements[$original] = 'N/A';
+                        }
+                    }
+                    else {
+                        $replacements[$original] = 'N/A';
+                    }
+                    break;
+            }
+        }
+    }
+
+    return $replacements;
 }

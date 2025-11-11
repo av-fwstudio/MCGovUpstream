@@ -6,7 +6,7 @@
         dots: false,
         prevArrow: '<button type="button" class="slick-prev" aria-label="Previous"></button>',
         nextArrow: '<button type="button" class="slick-next" aria-label="Next"></button>',
-        autoplay: false,
+        autoplay: true,
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -22,7 +22,9 @@
             breakpoint: 768,
             settings: {
               slidesToShow: 1,
-              slidesToScroll: 1
+              slidesToScroll: 1,
+              arrows: false,
+              autoplay: true,
             }
           }
         ]

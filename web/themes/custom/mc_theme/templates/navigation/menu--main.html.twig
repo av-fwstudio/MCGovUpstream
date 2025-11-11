@@ -55,7 +55,6 @@ We call a macro which calls itself to render the full tree.
                 {% else  %}
                     {{ link(item.title, item.url, { 'class': ['dropdown-toggle', 'menu__link'] }) }}
                 {% endif %}
-                <i class="fa fa-angle-down" data-toggle=".{{ 'menu-level-' ~ ( menu_level + 1 ) }}" tabindex="0"></i>
             {% else %}
                 <li{{ item.attributes.addClass(item_classes) }}>
                 {{ link(item.title, item.url, item.attributes.removeClass( 'menu__item' ), item.attributes.addClass( 'menu__link' ) ) }}
